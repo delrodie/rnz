@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2fa2b412c3baa650df569b2044d3bb0",
-    "content-hash": "7feb292d8f0a14dd7347aefa90bdc953",
+    "hash": "3b4c89125e7fdb342ff21352a64ecb20",
+    "content-hash": "f616af157096e1173ad120eb2609e474",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -774,6 +774,83 @@
                 "orm"
             ],
             "time": "2016-09-10 18:51:13"
+        },
+        {
+            "name": "friendsofsymfony/user-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+                "reference": "f3002436abeac555104069f4562d284d23d06dab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/f3002436abeac555104069f4562d284d23d06dab",
+                "reference": "f3002436abeac555104069f4562d284d23d06dab",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0",
+                "symfony/form": "^2.7 || ^3.0",
+                "symfony/framework-bundle": "^2.7 || ^3.0",
+                "symfony/security-bundle": "^2.7 || ^3.0",
+                "symfony/twig-bundle": "^2.7 || ^3.0"
+            },
+            "conflict": {
+                "symfony/doctrine-bridge": "<2.7"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^1.3",
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "phpunit/phpunit": "~4.8|~5.0",
+                "swiftmailer/swiftmailer": "^4.3 || ^5.0",
+                "symfony/console": "^2.7 || ^3.0",
+                "symfony/phpunit-bridge": "^2.7 || ^3.0",
+                "symfony/validator": "^2.7 || ^3.0",
+                "symfony/yaml": "^2.7 || ^3.0",
+                "willdurand/propel-typehintable-behavior": "^1.0"
+            },
+            "suggest": {
+                "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\UserBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
+                },
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com"
+                }
+            ],
+            "description": "Symfony FOSUserBundle",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "User management"
+            ],
+            "time": "2016-11-03 15:42:43"
         },
         {
             "name": "fzaninotto/faker",
@@ -2177,7 +2254,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "willdurand/faker-bundle": 0
+        "willdurand/faker-bundle": 0,
+        "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

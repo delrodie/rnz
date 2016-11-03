@@ -160,3 +160,7 @@ Ainsi nous avons comme MLD
                   ->add('image', ImageType::class)
               ;
         -*]
+
+6°/ **Gestion des utilisateurs**
+    Installation de FOSUserBundle
+    ** - [*- composer require friendsofsymfony/user-bundle "~2.0@dev" -*]
