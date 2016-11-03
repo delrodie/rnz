@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rubrique</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rubrique.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ rubrique.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ rubrique.description }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if rubrique.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_rubrique_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_rubrique_edit', { 'id': rubrique.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
