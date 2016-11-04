@@ -164,3 +164,12 @@ Ainsi nous avons comme MLD
 6°/ **Gestion des utilisateurs**
     Installation de FOSUserBundle
     ** - [*- composer require friendsofsymfony/user-bundle "~2.0@dev" -*]
+
+    Activation du bundle dans AppKernel
+    ** - [*- $bundles = [
+            ...
+            new FOS\UserBundle\FOSUserBundle(),
+            ];
+          -*]
+
+    Creation des classe User.php et Group.php
