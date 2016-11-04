@@ -173,3 +173,5 @@ Ainsi nous avons comme MLD
           -*]
 
     Creation des classe User.php et Group.php
+
+    Personnalisation de la page de connexion
