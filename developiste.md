@@ -216,3 +216,24 @@ Ainsi nous avons comme MLD
 
     Récupération des informations de mise en correspondance des entité tables
     ** - [*- php bin/console doctrine:mapping:import "AppBundle" xml -*]
+
+    Modification de la classe GroupType
+    ** - [*-
+            $builder
+                ->add('name', TextType::class, array(
+                      'attr'  => array(
+                          'class' => 'form-control'
+                      )
+                ))
+                ->add('roles', ChoiceType::class, array(
+                      'choices' => array(
+                        'Auteur'  => 'ROLE_AUTEUR',
+                        'Administrateur'  => 'ROLE_ADMIN'
+                      ),
+                      'multiple'  => true,
+                      'expanded'  => true
+                ))
+                ;
+          -*]
+
+    Mise en page de l'entité Groupe
