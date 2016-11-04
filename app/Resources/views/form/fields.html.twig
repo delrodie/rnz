@@ -1,0 +1,17 @@
+{% block choice_widget %}
+    {% spaceless %}
+        {% if expanded %}
+            {% for child in form %}
+                <div class="row">
+                  <label class="mt-checkbox mt-checkbox-outline">
+                    {{ form_widget(child) }}
+                    {{ form_label(child) }} <span></span>
+                  </label>
+                </div>
+            {% endfor %}
+        {% else %}
+            {# just let the choice widget render the select tag #}
+            {{ block('choice_widget') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

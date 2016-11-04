@@ -7,9 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class RubriqueType extends AbstractType
+class GroupType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -17,20 +17,23 @@ class RubriqueType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', TextType::class, array(
+            ->add('name', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off'
                   )
             ))
-            ->add('description', TextareaType::class, array(
-                  'attr'  => array(
-                      'class' => 'form-control'
-                  )
+            ->add('roles', ChoiceType::class, array(
+                  'choices' => array(
+                    'UTILISATEUR '  => 'ROLE_AUTEUR',
+                    'ADMINISTRATEUR '  => 'ROLE_ADMIN'
+                  ),
+                  'multiple'  => true,
+                  'expanded'  => true
             ))
-            ->add('statut')
             ;
     }
+
 
     /**
      * {@inheritdoc}
@@ -38,7 +41,7 @@ class RubriqueType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Rubrique'
+            'data_class' => 'AppBundle\Entity\Group'
         ));
     }
 
@@ -47,7 +50,7 @@ class RubriqueType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_rubrique';
+        return 'appbundle_group';
     }
 
 

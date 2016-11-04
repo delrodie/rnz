@@ -23,7 +23,8 @@ class ArticleType extends AbstractType
         $builder
               ->add('titre', TextType::class, array(
                     'attr'  => array(
-                        'class' => 'form-control'
+                        'class' => 'form-control',
+                        'autocomplete'  => 'off'
                     )
               ))
               ->add('resume', TextareaType::class, array(

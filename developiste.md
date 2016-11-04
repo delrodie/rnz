@@ -160,3 +160,86 @@ Ainsi nous avons comme MLD
                   ->add('image', ImageType::class)
               ;
         -*]
+
+6°/ **Gestion des utilisateurs**
+    Installation de FOSUserBundle
+    ** - [*- composer require friendsofsymfony/user-bundle "~2.0@dev" -*]
+
+    Activation du bundle dans AppKernel
+    ** - [*- $bundles = [
+            ...
+            new FOS\UserBundle\FOSUserBundle(),
+            ];
+          -*]
+
+    Creation des classe User.php et Group.php
+
+    Personnalisation de la page de connexion
+
+    Insertion des attributs
+    loginCount: pour le nombre de connexion de l'utilisateur
+    ** - [*- /**
+             * @ORM\Column(type="integer", length=6, options={"default":0})
+             */
+            protected $loginCount = 0;
+          -*]
+    firstLogin: pour la première connexion
+    ** - [*- /**
+             * @var \DateTime
+             *
+             * @ORM\Column(type="datetime", nullable=true)
+             */
+            protected $firstLogin;
+          -*]
+
+    Mise a jour de la base de donnée
+    ** - [*- php bin/console doctrine:cache:clear-metadata -*]
+         [*- php bin/console doctrine:schema:update --force -*]
+
+    Enregistrement de notre ecouteur de connexion
+    ** - [*- services:
+                login_listener:
+                    class: 'AppBundle\Listener\LoginListener'
+                    arguments: ['@fos_user.user_manager']
+                    tags:
+                        - { name: 'kernel.event_listener', event: 'security.interactive_login' }
+                        - { name: 'kernel.listener', event: 'fos_user.security.implicit_login' }
+          -*]
+
+    Creation de notre ecouteur
+    AppBundle\Listener\LoginListener.php
+
+    Gestion de la classe Groupe
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:Group -*]
+
+    Sauvegarde des entités (copie de repertoire AppBundle\Entity)
+
+    Récupération des informations de mise en correspondance des entité tables
+    ** - [*- php bin/console doctrine:mapping:import "AppBundle" xml -*]
+
+    Modification de la classe GroupType
+    ** - [*-
+            $builder
+                ->add('name', TextType::class, array(
+                      'attr'  => array(
+                          'class' => 'form-control'
+                      )
+                ))
+                ->add('roles', ChoiceType::class, array(
+                      'choices' => array(
+                        'Auteur'  => 'ROLE_AUTEUR',
+                        'Administrateur'  => 'ROLE_ADMIN'
+                      ),
+                      'multiple'  => true,
+                      'expanded'  => true
+                ))
+                ;
+          -*]
+
+    Mise en page de l'entité Groupe
+      creation de de template pour affichage des roles a cocher
+      app/Resources/views/form/fields.html.twig
+
+    Mise en page de l'entité User
+
+    

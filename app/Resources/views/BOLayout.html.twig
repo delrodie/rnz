@@ -76,39 +76,28 @@
 
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                        <span>Bonjour Utilisateur</span>
-                                        <img src="../assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
+                                        <span>
+                                          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            {{ 'layout.hello'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} 
+                                          {% endif %}
+                                        </span>
+                                        <img src="{{ asset('ressources/images/avatar.png')}}" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         <li>
-                                            <a href="page_user_profile_1.html">
-                                                <i class="icon-user"></i> My Profile
-                                                <span class="badge badge-danger">1</span>
+                                            <a href="{{ path('fos_user_profile_show')}}">
+                                                <i class="icon-user"></i> Mon Profile
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="app_calendar.html">
-                                                <i class="icon-calendar"></i> My Calendar </a>
-                                        </li>
-                                        <li>
-                                            <a href="app_inbox.html">
-                                                <i class="icon-envelope-open"></i> My Inbox
-                                                <span class="badge badge-danger"> 3 </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="app_todo_2.html">
-                                                <i class="icon-rocket"></i> My Tasks
-                                                <span class="badge badge-success"> 7 </span>
+                                            <a href="#">
+                                                <i class="fa fa-book"></i> Mes publications
+                                                <span class="badge badge-success">1</span>
                                             </a>
                                         </li>
                                         <li class="divider"> </li>
                                         <li>
-                                            <a href="page_user_lock_1.html">
-                                                <i class="icon-lock"></i> Lock Screen </a>
-                                        </li>
-                                        <li>
-                                            <a href="page_user_login_1.html">
-                                                <i class="icon-key"></i> Log Out </a>
+                                            <a href="{{ path('fos_user_security_logout')}}">
+                                                <i class="icon-logout"></i> Deconnexion </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -174,14 +163,17 @@
                                         <i class="icon-people"></i> Utilisateurs </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
                                         <li class="">
-                                            <a href="">
+                                            <a href="{{ path('admin_user_index')}}">
                                             <i class="fa fa-list" aria-hidden="true"></i> Listes </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="{{ path('admin_user_new')}}">
                                             <i class="fa fa-plus"></i> Ajouter </a>
                                         </li>
-
+                                        <li>
+                                            <a href="{{ path('admin_group_index')}}">
+                                            <i class="fa fa-users"></i> Groupe </a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
