@@ -208,3 +208,11 @@ Ainsi nous avons comme MLD
 
     Creation de notre ecouteur
     AppBundle\Listener\LoginListener.php
+
+    Gestion de la classe Groupe
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:Group -*]
+
+    Sauvegarde des entités (copie de repertoire AppBundle\Entity)
+
+    Récupération des informations de mise en correspondance des entité tables
+    ** - [*- php bin/console doctrine:mapping:import "AppBundle" xml -*]
