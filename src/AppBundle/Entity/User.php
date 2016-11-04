@@ -32,4 +32,64 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * @ORM\Column(type="integer", length=6, options={"default":0})
+     */
+    protected $loginCount = 0;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $firstLogin;
+
+    /**
+     * Set loginCount
+     *
+     * @param integer $loginCount
+     *
+     * @return User
+     */
+    public function setLoginCount($loginCount)
+    {
+        $this->loginCount = $loginCount;
+
+        return $this;
+    }
+
+    /**
+     * Get loginCount
+     *
+     * @return integer
+     */
+    public function getLoginCount()
+    {
+        return $this->loginCount;
+    }
+
+    /**
+     * Set firstLogin
+     *
+     * @param \DateTime $firstLogin
+     *
+     * @return User
+     */
+    public function setFirstLogin($firstLogin)
+    {
+        $this->firstLogin = $firstLogin;
+
+        return $this;
+    }
+
+    /**
+     * Get firstLogin
+     *
+     * @return \DateTime
+     */
+    public function getFirstLogin()
+    {
+        return $this->firstLogin;
+    }
 }

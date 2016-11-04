@@ -175,3 +175,36 @@ Ainsi nous avons comme MLD
     Creation des classe User.php et Group.php
 
     Personnalisation de la page de connexion
+
+    Insertion des attributs
+    loginCount: pour le nombre de connexion de l'utilisateur
+    ** - [*- /**
+             * @ORM\Column(type="integer", length=6, options={"default":0})
+             */
+            protected $loginCount = 0;
+          -*]
+    firstLogin: pour la première connexion
+    ** - [*- /**
+             * @var \DateTime
+             *
+             * @ORM\Column(type="datetime", nullable=true)
+             */
+            protected $firstLogin;
+          -*]
+
+    Mise a jour de la base de donnée
+    ** - [*- php bin/console doctrine:cache:clear-metadata -*]
+         [*- php bin/console doctrine:schema:update --force -*]
+
+    Enregistrement de notre ecouteur de connexion
+    ** - [*- services:
+                login_listener:
+                    class: 'AppBundle\Listener\LoginListener'
+                    arguments: ['@fos_user.user_manager']
+                    tags:
+                        - { name: 'kernel.event_listener', event: 'security.interactive_login' }
+                        - { name: 'kernel.listener', event: 'fos_user.security.implicit_login' }
+          -*]
+
+    Creation de notre ecouteur
+    AppBundle\Listener\LoginListener.php

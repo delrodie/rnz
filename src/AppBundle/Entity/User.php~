@@ -32,4 +32,16 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * @ORM\Column(type="integer", length=6, options={"default":0})
+     */
+    protected $loginCount = 0;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $firstLogin;
 }
