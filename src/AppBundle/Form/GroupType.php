@@ -24,8 +24,8 @@ class GroupType extends AbstractType
             ))
             ->add('roles', ChoiceType::class, array(
                   'choices' => array(
-                    'Auteur'  => 'ROLE_AUTEUR',
-                    'Administrateur'  => 'ROLE_ADMIN'
+                    'UTILISATEUR '  => 'ROLE_AUTEUR',
+                    'ADMINISTRATEUR '  => 'ROLE_ADMIN'
                   ),
                   'multiple'  => true,
                   'expanded'  => true
