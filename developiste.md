@@ -239,3 +239,7 @@ Ainsi nous avons comme MLD
     Mise en page de l'entité Groupe
       creation de de template pour affichage des roles a cocher
       app/Resources/views/form/fields.html.twig
+
+    Mise en page de l'entité User
+
+    

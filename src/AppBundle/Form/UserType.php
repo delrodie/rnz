@@ -6,6 +6,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 class UserType extends AbstractType
 {
     /**
@@ -14,25 +20,48 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('usernameCanonical')
-            ->add('email')
-            ->add('emailCanonical')
-            ->add('enabled')
-            ->add('salt')
-            ->add('password')
-            ->add('lastLogin')
+            ->add('username', TextType::class, array(
+                  'attr'  => array(
+                      'class' => 'form-control',
+                      'autocomplete'  => 'off'
+                  )
+            ))
+            //->add('usernameCanonical')
+            ->add('email', EmailType::class, array(
+                  'attr'  => array(
+                      'class' => 'form-control',
+                      'autocomplete'  => 'off'
+                  )
+            ))
+            //->add('emailCanonical')
+            //->add('enabled')
+            //->add('salt')
+            ->add('password', PasswordType::class, array(
+                  'attr'  => array(
+                      'class' => 'form-control'
+                  )
+            ))
+            //->add('lastLogin')
             ->add('locked')
-            ->add('expired')
-            ->add('expiresAt')
-            ->add('confirmationToken')
-            ->add('passwordRequestedAt')
-            ->add('roles')
-            ->add('credentialsExpired')
-            ->add('credentialsExpireAt')
-            ->add('loginCount')
-            ->add('firstLogin')
-            ->add('group')        ;
+            //->add('expired')
+            //->add('expiresAt')
+            //->add('confirmationToken')
+            //->add('passwordRequestedAt')
+            ->add('roles', ChoiceType::class, array(
+                  'choices' => array(
+                    'UTILISATEUR '  => 'ROLE_AUTEUR',
+                    'ADMINISTRATEUR '  => 'ROLE_ADMIN'
+                  ),
+                  'multiple'  => true,
+                  'expanded'  => true
+            ))
+            //->add('credentialsExpired')
+            //->add('credentialsExpireAt')
+            //->add('loginCount')
+            //->add('firstLogin')
+            //->add('groups')
+
+            ;
     }
 
     /**

@@ -19,7 +19,8 @@ class GroupType extends AbstractType
         $builder
             ->add('name', TextType::class, array(
                   'attr'  => array(
-                      'class' => 'form-control'
+                      'class' => 'form-control',
+                      'autocomplete'  => 'off'
                   )
             ))
             ->add('roles', ChoiceType::class, array(

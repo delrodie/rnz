@@ -19,7 +19,8 @@ class RubriqueType extends AbstractType
         $builder
             ->add('titre', TextType::class, array(
                   'attr'  => array(
-                      'class' => 'form-control'
+                      'class' => 'form-control',
+                      'autocomplete'  => 'off'
                   )
             ))
             ->add('description', TextareaType::class, array(

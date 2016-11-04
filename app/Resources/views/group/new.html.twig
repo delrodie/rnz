@@ -75,10 +75,7 @@
                 <label class="control-label col-md-3">Roles</label>
                 <div class="mt-checkbox-list col-md-6 col-md-offset-1">
 
-                      {% for child in form %}
-                          {{ form_widget(child) }}
-                          {{ form_label(child) }}
-                      {% endfor %}
+                      {{ form_widget(form.roles)}}
                       {{ form_errors(form.roles) }}
 
                 </div>
