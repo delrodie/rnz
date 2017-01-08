@@ -32,14 +32,14 @@ class User extends BaseUser {
     protected $groups;
 
     /**
-     * @ORM\Column(type="integer", length=6, options={"default":0})
+     * @ORM\Column(name="login_count", type="integer", length=6, options={"default":0})
      */
     protected $loginCount = 0;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(name="first_login", type="datetime", nullable=true)
      */
     protected $firstLogin;
 

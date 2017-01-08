@@ -242,4 +242,6 @@ Ainsi nous avons comme MLD
 
     Mise en page de l'entité User
 
-    
+7°/ **Installation de StofDoctrineExtensionsBundle**
+    Installation de StofDoctrineExtensionsBundle
+    ** - [*- https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/symfony2.md -*]
