@@ -36,6 +36,7 @@
       <!-- END THEME GLOBAL STYLES -->
 
       <link href="{{ asset('ressources/vendor/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset('ressources/css/bo.css') }}" rel="stylesheet" type="text/css" />
 
       {% endblock %}
     </head>
@@ -60,8 +61,9 @@
                             </button>
                             <!-- End Toggle Button -->
                             <!-- BEGIN LOGO -->
-                            <a id="index" class="page-logo" href="index.html">
-                                BackOffice<img src="../assets/layouts/layout5/img/logo.png" alt="Logo"> </a>
+                            <a id="index" class="page-logo MonLogo" href="#">
+                                BackOffice
+                            </a>
                             <!-- END LOGO -->
                             <!-- BEGIN SEARCH -->
                             <form class="search" action="extra_search.html" method="GET">
@@ -78,7 +80,7 @@
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>
                                           {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                            {{ 'layout.hello'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} 
+                                            {{ 'layout.hello'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                                           {% endif %}
                                         </span>
                                         <img src="{{ asset('ressources/images/avatar.png')}}" alt=""> </button>
@@ -133,31 +135,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-doc"></i> Articles </a>
-                                   <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="{{ path('admin_article_index')}}">
-                                            <i class="fa fa-list" aria-hidden="true"></i> Listes </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('admin_article_new')}}">
-                                            <i class="fa fa-plus"></i> Ajouter </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-picture"></i> Photos </a>
-                                    <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="">
-                                            <i class="fa fa-folder-open-o"></i> albums </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
+                                
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-people"></i> Utilisateurs </a>
@@ -173,6 +151,43 @@
                                         <li>
                                             <a href="{{ path('admin_group_index')}}">
                                             <i class="fa fa-users"></i> Groupe </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="fa fa-cogs"></i> Paramètres </a>
+                                    <ul class="dropdown-menu dropdown-menu-fw">
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> <i class="fa fa-plus" aria-hidden="true"></i> Accueil </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Introduction</a></li>
+                                            <li><a href="#">Slider</a></li>
+                                          </ul>
+                                      </li>
+                                        <li class="">
+                                            <a href="#">
+                                            <i class="fa fa-plus" aria-hidden="true"></i> Presentation </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fa fa-plus"></i> Avantages </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fa fa-plus"></i> Communauté </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fa fa-plus"></i> Evenement </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fa fa-plus"></i> Publicité </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fa fa-plus"></i> Contact </a>
                                         </li>
                                     </ul>
                                 </li>

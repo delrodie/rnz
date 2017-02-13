@@ -1,0 +1,77 @@
+/* NAVBAR */
+nav { color: #000; background-color: #ff; width: 100%; height: 56px; line-height: 56px; }
+
+/* Dimension image */
+.img200 { width: 200px; }
+.img300 { width: 300px; }
+.img400 { width: 400px; }
+.img500 { width: 500px; }
+
+/* Bare de navigation */
+#rnzassa-section-menu { /* Border */ }
+#rnzassa-section-menu .menu-information { background-color: #222; padding-top: 3px; padding-bottom: 3px; }
+#rnzassa-section-menu .menu-information a { color: #ccc; font-size: 0.8em; font-weight: bold; }
+#rnzassa-section-menu .menu-information a:hover { color: #BB1850; }
+#rnzassa-section-menu .menu-information div:first-child { border-right: solid 1px rgba(204, 204, 204, 0.7); }
+#rnzassa-section-menu .menu-information div:last-child { border-left: solid 1px rgba(204, 204, 204, 0.7); }
+#rnzassa-section-menu .ui.menu .item:before { position: absolute; content: ''; top: 0%; right: 0px; height: 100%; width: 0px; background: rgba(34, 36, 38, 0.1); }
+
+/* SLIDER */
+.slider.rnzassa-slider { height: 850px; width: 100%; position: absolute; top: 50px; left: 0; right: 0; bottom: 0; }
+
+.slider.rnzassa-slider ul.slides { height: 850px; }
+
+.slider.rnzassa-slider ul.indicators { z-index: 2; bottom: 50px; }
+
+.slider .slides { background-color: #9e9e9e; margin: 0; height: 850px; }
+
+.slider .slides li { opacity: 0; position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: inherit; overflow: hidden; }
+
+.slider .slides li img { height: 100%; width: 100%; background-size: cover; background-position: center; }
+
+/* Page d'accueil */
+.rnzassa-intro-container { margin-top: 700px; }
+.rnzassa-intro-container .col-gauche { margin-top: 25px; }
+.rnzassa-intro-container .col-droite { margin-top: 75px; }
+.rnzassa-intro-domaine-tuile { margin-top: 25px; margin-bottom: 25px; }
+.rnzassa-intro-domaine-tuile h2 { font-size: 1.5em; color: #bb1850; font-weight: bold; text-align: center; }
+.rnzassa-intro-domaine-tuile .tuile-info { border: solid 1px rgba(204, 204, 204, 0.7); -webkit-box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); -moz-box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); }
+.rnzassa-intro-domaine-tuile .tuile-info h4 { text-align: center; text-transform: uppercase; font-size: .9em; font-weight: bold; color: #bb1850; }
+.rnzassa-intro-domaine-tuile .tuile-info h4:hover { color: #ccc; }
+.rnzassa-intro-domaine-tuile .tuile-info p { color: #666; text-align: center; padding-top: 15px; font-size: .75em; }
+.rnzassa-intro-domaine-tuile .tuile-info:hover { background-color: rgba(204, 204, 204, 0.6); }
+.rnzassa-intro-domaine-tuile .bordure-verte { border-top: solid 5px green; }
+.rnzassa-intro-domaine-tuile .bordure-orange { border-top: solid 5px orange; }
+.rnzassa-intro-domaine-tuile .bordure-rouge { border-top: solid 5px red; }
+.rnzassa-intro-domaine-tuile .bordure-noire { border-top: solid 5px black; }
+.rnzassa-intro-domaine-tuile a:hover { text-decoration: none; color: #ccc; overflow: #ccc; }
+.rnzassa-intro-domaine-tuile .tuile-colonne { margin-bottom: 7px; }
+.rnzassa-intro-forum h2 { font-size: 1.5em; color: #bb1850; font-weight: bold; text-align: left; background-color: rgba(204, 204, 204, 0.4); padding-top: 5px; padding-bottom: 5px; padding-left: 5px; }
+.rnzassa-intro-forum .forum-avatar { width: 50px; height: 50px; }
+.rnzassa-intro-forum .actualite a { color: #666; }
+
+/* Fin Page d'accueil */
+/* Footer */
+.nzassa-footer { margin-top: 50px; }
+.nzassa-footer .nzassa-plan { padding-top: 50px; background-color: rgba(153, 153, 153, 0.3); }
+.nzassa-footer .nzassa-plan h4 { font-size: .85em; font-weight: bold; text-transform: uppercase; color: #333F50; }
+.nzassa-footer .nzassa-plan a { color: rgba(51, 63, 80, 0.7); }
+.nzassa-footer .nzassa-plan a:hover { color: #BB1850; text-decoration: none; }
+.nzassa-footer .nzassa-copyright { background-color: #101318; color: rgba(153, 204, 255, 0.4); font-size: .75em; padding-top: 3px; padding-bottom: 3px; }
+
+/* Page secondaire */
+.rnzassa-page-container { margin-top: 100px; }
+.rnzassa-page-container .page-container { margin-top: 25px; -webkit-box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); -moz-box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); }
+.rnzassa-page-container .page-container .img-a-gauche { float: left; padding-right: 25px; padding-bottom: 25px; padding-top: 25px; }
+.rnzassa-page-container .page-container .actualite a { color: #666; }
+.rnzassa-page-container .page-container h2 { font-size: 1.5em; color: #bb1850; font-weight: bold; text-align: left; background-color: rgba(204, 204, 204, 0.4); padding-top: 5px; padding-bottom: 5px; padding-left: 5px; }
+.rnzassa-page-container .page-container .rnzassa-pub { margin-top: 60px; }
+.rnzassa-page-container .page-container .rnzassa-contenu { margin-bottom: 25px; padding-bottom: 25px; padding-top: 25px; padding-right: 25px; }
+.rnzassa-page-container .page-container .rnzassa-contenu .rnzassa-telephone { color: #bb1850; font-weight: bold; font-size: 2em; text-align: center; padding-top: 15px; padding-bottom: 10px; }
+.rnzassa-page-container .page-container .rnzassa-contenu .rnzassa-exmple { font-weight: bold; font-size: 1.05em; font-style: italic; padding-bottom: 15px; text-align: center; }
+.rnzassa-page-container .page-container .rnzassa-contenu .rnzassa-contact-tel { font-weight: bold; font-size: 1.2em; }
+.rnzassa-page-container .page-container .rnzassa-actualite { padding-top: 25px; padding-bottom: 25px; }
+.rnzassa-page-container .page-container .rnzassa-actualite h3 { border-bottom: solid 2px rgba(102, 102, 102, 0.8); color: rgba(102, 102, 102, 0.8); text-transform: uppercase; font-size: 1.1em; }
+.rnzassa-page-container .rnzassa-statistique { margin-top: 75px; }
+.rnzassa-page-container .rnzassa-statistique .value { color: rgba(102, 102, 102, 0.7); }
+.rnzassa-page-container .rnzassa-statistique .label { color: rgba(102, 102, 102, 0.9); }
