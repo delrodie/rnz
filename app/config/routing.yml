@@ -9,3 +9,8 @@ menu_presentation:
     path:     /menu/presentation
     defaults: { _controller: "AppBundle:Menu:presentation" }
     methods:  [GET, POST]
+
+menu_avantage:
+    path:     /menu/avantage
+    defaults: { _controller: "AppBundle:Menu:avantage" }
+    methods:  [GET, POST]

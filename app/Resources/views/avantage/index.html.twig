@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Avantages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rubrique</th>
+                <th>Titre</th>
+                <th>Slug</th>
+                <th>Resume</th>
+                <th>Contenu</th>
+                <th>Tags</th>
+                <th>Publiepar</th>
+                <th>Modifiepar</th>
+                <th>Publiele</th>
+                <th>Modifiele</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avantage in avantages %}
+            <tr>
+                <td><a href="{{ path('admin_avantage_show', { 'id': avantage.id }) }}">{{ avantage.id }}</a></td>
+                <td>{{ avantage.rubrique }}</td>
+                <td>{{ avantage.titre }}</td>
+                <td>{{ avantage.slug }}</td>
+                <td>{{ avantage.resume }}</td>
+                <td>{{ avantage.contenu }}</td>
+                <td>{{ avantage.tags }}</td>
+                <td>{{ avantage.publiePar }}</td>
+                <td>{{ avantage.modifiePar }}</td>
+                <td>{{ avantage.publieLe }}</td>
+                <td>{{ avantage.modifieLe }}</td>
+                <td>{% if avantage.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_avantage_show', { 'id': avantage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_avantage_edit', { 'id': avantage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_avantage_new') }}">Create a new avantage</a>
+        </li>
+    </ul>
+{% endblock %}

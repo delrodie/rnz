@@ -1,0 +1,3 @@
+{% for avantage in avantages %}
+    <li><a href="{{ path('admin_avantage_show', { 'slug': avantage.slug }) }}">{{ avantage.rubrique|upper }}</a></li>
+{% endfor %}
