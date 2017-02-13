@@ -14,3 +14,10 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/src/AppBundle/Entity/*~
+/web/ressources/images/**/*.jpg
+/web/ressources/images/**/*.png
+/web/ressources/images/**/*.gif
+/web/ressources/images/**/*.jpeg
+!/web/ressources/images/logonzassa.png
+!/web/ressources/images/favicon.png

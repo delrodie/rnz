@@ -126,16 +126,42 @@
                                         <i class="icon-folder"></i> Rubriques </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
                                         <li class="">
-                                            <a href="{{ path('admin_rubrique_index')}}">
-                                            <i class="fa fa-list" aria-hidden="true"></i> Listes </a>
+                                            <a href="{{ path('admin_slider_index') }}">
+                                            <i class="fa fa-home" aria-hidden="true"></i> Accueil </a>
                                         </li>
-                                        <li>
-                                            <a href="{{ path('admin_rubrique_new') }}">
-                                            <i class="fa fa-plus"></i> Ajouter </a>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"> Qui sommes-nous? </a>
+                                            <ul class="dropdown-menu">
+                                              <li></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"> Avantages </a>
+                                            <ul class="dropdown-menu">
+                                              <li></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"> Communauté </a>
+                                            <ul class="dropdown-menu">
+                                              <li></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"> Contacter </a>
+                                            <ul class="dropdown-menu">
+                                              <li></li>
+                                            </ul>
+                                        </li>
+                                        <li class="">
+                                            <a href="#">
+                                            <i class="icon-calendar" aria-hidden="true"></i> Evenements </a>
+                                        </li><li class="">
+                                            <a href="#">
+                                            <i class="icon-picture" aria-hidden="true"></i> Publicité </a>
                                         </li>
                                     </ul>
                                 </li>
-                                
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-people"></i> Utilisateurs </a>
@@ -162,7 +188,7 @@
                                           <a href="javascript:;"> <i class="fa fa-plus" aria-hidden="true"></i> Accueil </a>
                                           <ul class="dropdown-menu">
                                             <li><a href="#">Introduction</a></li>
-                                            <li><a href="#">Slider</a></li>
+                                            <li><a href="{{ path('admin_slider_new') }}">Slider</a></li>
                                           </ul>
                                       </li>
                                         <li class="">
