@@ -1,0 +1,3 @@
+{% for contact in contacts %}
+    <li><a href="{{ path('admin_contact_show', { 'slug': contact.slug }) }}">{{ contact.rubrique|upper }}</a></li>
+{% endfor %}

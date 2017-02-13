@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Imgcontacts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for imgContact in imgContacts %}
+            <tr>
+                <td><a href="{{ path('admin_imgcontact_show', { 'id': imgContact.id }) }}">{{ imgContact.id }}</a></td>
+                <td>{{ imgContact.url }}</td>
+                <td>{{ imgContact.alt }}</td>
+                <td>{% if imgContact.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_imgcontact_show', { 'id': imgContact.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_imgcontact_edit', { 'id': imgContact.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_imgcontact_new') }}">Create a new imgContact</a>
+        </li>
+    </ul>
+{% endblock %}

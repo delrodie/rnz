@@ -150,7 +150,7 @@
                                         <li class="dropdown more-dropdown-sub">
                                             <a href="javascript:;"> Contacter </a>
                                             <ul class="dropdown-menu">
-                                              <li></li>
+                                              {{ render(url('menu_contact')) }}
                                             </ul>
                                         </li>
                                         <li class="">
@@ -160,6 +160,41 @@
                                             <a href="{{ path('admin_publicite_index')}}">
                                             <i class="icon-picture" aria-hidden="true"></i> Publicité </a>
                                         </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="fa fa-book"></i> Annuaire </a>
+                                    <ul class="dropdown-menu dropdown-menu-fw">
+                                      <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> <i class="fa fa-map-marker"></i> Zones </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ajouter</a></li>
+                                            <li><a href="#">Liste</a></li>
+                                          </ul>
+                                      </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"> Domaines </a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="#">Ajouter</a></li>
+                                              <li><a href="#">Liste</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"> Bénéficiaires </a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="#">Ajouter</a></li>
+                                              <li><a href="#">Liste</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"> Formateurs </a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="#">Ajouter</a></li>
+                                              <li><a href="#">Liste</a></li>
+                                            </ul>
+                                        </li>
+
                                     </ul>
                                 </li>
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
@@ -212,7 +247,7 @@
                                             <i class="fa fa-plus"></i> Publicité </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ path('admin_contact_new')}}">
                                             <i class="fa fa-plus"></i> Contact </a>
                                         </li>
                                     </ul>
