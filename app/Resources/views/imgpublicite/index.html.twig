@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Imgpublicites list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for imgPublicite in imgPublicites %}
+            <tr>
+                <td><a href="{{ path('admin_imgpublicite_show', { 'id': imgPublicite.id }) }}">{{ imgPublicite.id }}</a></td>
+                <td>{{ imgPublicite.url }}</td>
+                <td>{{ imgPublicite.alt }}</td>
+                <td>{% if imgPublicite.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_imgpublicite_show', { 'id': imgPublicite.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_imgpublicite_edit', { 'id': imgPublicite.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_imgpublicite_new') }}">Create a new imgPublicite</a>
+        </li>
+    </ul>
+{% endblock %}
