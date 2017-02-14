@@ -10,4 +10,31 @@ namespace AppBundle\Repository;
  */
 class ContactRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+    * Recherche de l'article de la rubrique contact
+    *
+    * Author: Delrodie AMOIKON
+    * Date: 14/02/2017
+    * Since: v1.0
+    */
+    public function getContact()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+            SELECT c
+            FROM AppBundle:Contact c
+            WHERE c.statut = :stat
+        ')
+          ->setParameter('stat', 1)
+        ;
+        try {
+            $result = $qb->getResult();
+
+            return $result;
+
+        } catch (NoResultException $e) {
+            return $e;
+        }
+
+    }
 }

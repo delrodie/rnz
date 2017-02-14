@@ -35,4 +35,33 @@ class DomaineRepository extends \Doctrine\ORM\EntityRepository
           return $code = $recup;
       }
   }
+
+  /**
+    * Recherche de l'article de la rubrique domaine
+    *
+    * Author: Delrodie AMOIKON
+    * Date: 14/02/2017
+    * Since: v1.0
+    */
+    public function getDomaine()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+            SELECT d
+            FROM AppBundle:Domaine d
+            WHERE d.desactivation = :stat
+            ORDER BY d.libelle ASC
+        ')
+          ->setParameter('stat', 0)
+        ;
+        try {
+            $result = $qb->getResult();
+
+            return $result;
+
+        } catch (NoResultException $e) {
+            return $e;
+        }
+
+    }
 }

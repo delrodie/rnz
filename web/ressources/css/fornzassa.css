@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/*!
+ * Plateforme des jeunes entrepreneurs de Côte d'Ivoire
+ * Copyright 2016-2017 | by Delrodie AMOIKON
+ */
+#section-menu { position: absolute; top: 0px; z-index: 2; width: 100%; }
+#section-carousel { top: 0px; z-index: 1; }
+#section-domaine { margin-top: 50px; }
+#section-avantage { margin-top: 50px; }
+#section-footer { margin-top: 100px; }
+#section-couverture { top: 0; z-index: 1; }
+#section-annuaire { margin-top: 50px; }
+
+.rnzassa-domaine { margin-top: 50px; margin-bottom: 50px; }
+.rnzassa-domaine .columns { background-color: rgba(227, 200, 0, 0.7); color: #fff; border: solid 1px #fff; }
+.rnzassa-domaine .columns:hover { background-color: #bb1850; color: #fff; }
+.rnzassa-domaine a.tuile { border: solid 1px rgba(227, 200, 0, 0.1); -webkit-box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); -moz-box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); box-shadow: 0px 2px 2px 2px rgba(211, 204, 204, 0.4); }
+.rnzassa-domaine a.tuile h4 { text-align: center; font-size: .8em; color: #000034; font-weight: bold; text-transform: uppercase; padding-top: 10px; padding-bottom: 10px; }
+.rnzassa-domaine a.tuile h4:hover { color: #fff; }
+.rnzassa-domaine a:hover { color: #fff; }
+
+.rnzassa-avantage { margin: 10px auto 40px auto; }
+.rnzassa-avantage img.gauche { border-radius: 5px; border: solid 1px rgba(204, 204, 204, 0.7); padding: 5px; float: left; width: 150px; margin-left: auto; margin-right: 25px; margin-top: 25px; }
+.rnzassa-avantage img.droite { border-radius: 5px; border: solid 1px rgba(204, 204, 204, 0.7); padding: 5px; float: right; width: 150px; margin-left: 25px; margin-right: auto; margin-top: 25px; }
+.rnzassa-avantage h2 { font-weight: bold; font-size: 1.8em; margin-bottom: 0; padding-bottom: 0; color: rgba(0, 0, 52, 0.6); }
+.rnzassa-avantage p { text-align: justify; color: rgba(0, 0, 0, 0.7); }
+
+.rnzassa-evenement { border: solid 1px rgba(187, 24, 80, 0.2); margin-bottom: 50px; }
+.rnzassa-evenement h4 { background-color: #bb1850; text-transform: uppercase; color: #fff; font-size: 1em; font-weight: bold; padding-top: 10px; padding-bottom: 10px; padding-left: 7px; }
+.rnzassa-evenement .event-item { padding-left: 10px; padding-right: 10px; padding-bottom: 15px; font-size: .875em; }
+.rnzassa-evenement .event-item:hover { background-color: #f1f1f1; }
+.rnzassa-evenement .event-item blockquote { font-weight: bold; }
+.rnzassa-evenement .event-item blockquote footer { color: #bb1850; font-size: .7em; }
+.rnzassa-evenement a { color: #616161; font-weight: bold; text-align: justify; }
+.rnzassa-evenement a:hover { text-decoration: none; }
+
+.rnzassa-pub { border: solid 1px rgba(187, 24, 80, 0.2); margin-bottom: 50px; }
+.rnzassa-pub h4 { background-color: #bb1850; text-transform: uppercase; color: #fff; font-size: 1em; font-weight: bold; padding-top: 10px; padding-bottom: 10px; padding-left: 7px; }
+
+.rnzassa-menu { background-color: rgba(255, 255, 255, 0.85); position: absolute; top: 0; border-bottom: solid 1px rgba(204, 204, 204, 0.4); }
+.rnzassa-menu .logo { text-align: center; }
+.rnzassa-menu .connexion { padding: 15px 25px 10px 0; text-align: right; margin-right: 75px; text-transform: uppercase; }
+.rnzassa-menu .connexion a { color: #bb1850; }
+.rnzassa-menu .connexion a:hover { color: #000034; text-decoration: none; }
+.rnzassa-menu .menu .active { background-color: rgba(204, 204, 204, 0.4); }
+.rnzassa-menu .menu a { text-align: center; font-size: .85em; color: #000034; }
+.rnzassa-menu .menu a.menu-titre { text-transform: uppercase; }
+.rnzassa-menu .menu a.menuV-titre { text-align: left; margin-top: 50px; text-transform: uppercase; font-weight: bold; }
+.rnzassa-menu .menu a:hover { color: #bb1850; text-decoration: none; }
+.rnzassa-menu .menu .is-dropdown-submenu-parent .menu a { text-align: left; font-size: .9em; }
+
+/* Footer */
+.nzassa-footer { margin-top: 50px; }
+.nzassa-footer .nzassa-plan { padding-top: 50px; background-color: rgba(153, 153, 153, 0.3); }
+.nzassa-footer .nzassa-plan h4 { font-size: .85em; font-weight: bold; text-transform: uppercase; color: #333F50; }
+.nzassa-footer .nzassa-plan a { color: rgba(51, 63, 80, 0.7); }
+.nzassa-footer .nzassa-plan a:hover { color: #BB1850; text-decoration: none; }
+.nzassa-footer .nzassa-copyright { background-color: #101318; color: rgba(153, 204, 255, 0.4); font-size: .75em; padding-top: 3px; padding-bottom: 3px; }
+
+.rnzassa-annuaire.relative { position: relative; }
+.rnzassa-annuaire.fixed-size { overflow: hidden; }
+.rnzassa-annuaire.overlay { background: #000034; bottom: 0; left: 0; position: absolute; top: 0; right: 0; z-index: 1; }
+.rnzassa-annuaire.couverture { background: url("../images/bg.jpg"); background-size: cover !important; background-position: 50% 0; background-attachment: fixed !important; background-size: auto 70%; margin: 25px auto; }
+.rnzassa-annuaire .filigrane { background-color: rgba(255, 255, 255, 0.7); }
+.rnzassa-annuaire .formulaire { margin-top: 75px; margin-bottom: 50px; }
+
+.rnzassa-annuaire-liste { margin-bottom: 50px; }
+.rnzassa-annuaire-liste h2 { font-size: 1em; font-weight: bold; text-transform: uppercase; color: #bb1850; border-bottom: solid 2px #bb1850; }
+.rnzassa-annuaire-liste .rnzassa-tuile { margin-top: 20px; margin-bottom: 7px; border: solid 1px rgba(196, 195, 208, 0.4); background-color: #fff; -webkit-box-shadow: 2px 2px 2px 0px rgba(211, 204, 204, 0.4); -moz-box-shadow: 2px 2px 2px 0px rgba(211, 204, 204, 0.4); box-shadow: 2px 2px 2px 0px rgba(211, 204, 204, 0.4); margin-bottom: 25px; border-radius: 7px 7px 0 0; }
+.rnzassa-annuaire-liste .rnzassa-tuile img.gauche { border-radius: 5px; border: solid 1px rgba(204, 204, 204, 0.7); padding: 5px; float: left; width: 125px; margin-left: auto; margin-right: 25px; margin-top: 25px; }
+.rnzassa-annuaire-liste .rnzassa-tuile img.gauche.portrait { margin-left: 10px; }
+.rnzassa-annuaire-liste .rnzassa-tuile h4 { font-size: 1.15em; color: rgba(0, 0, 0, 0.7); font-weight: bold; margin-top: 15px; }
+.rnzassa-annuaire-liste .rnzassa-tuile h6 { font-style: italic; }
+.rnzassa-annuaire-liste .rnzassa-tuile .contact { margin-top: 10px; margin-bottom: 10px; }
+.rnzassa-annuaire-liste .rnzassa-tuile .contact .gauche { font-weight: bold; font-style: italic; }
+.rnzassa-annuaire-liste .rnzassa-tuile .contact .droite { font-weight: bold; color: #bb1850; }
+.rnzassa-annuaire-liste .rnzassa-tuile:hover { background-color: rgba(97, 97, 97, 0.1); }

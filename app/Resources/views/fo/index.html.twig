@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Reseau Nzassa</title>
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/foundation/css/foundation.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/owl-carousel/owl.carousel.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/owl-carousel/owl.theme.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/font-awesome-4.5.0/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('ressources/css/fornzassa.css')}}">
+</head>
+<body>
+	<section id="section-menu" data-sticky-container>
+		<div class="row rnzassa-menu" data-sticky data-options="marginTop:0;" style="width:100%">
+			<div class="medium-3 columns logo">
+				<img src="{{ asset('ressources/images/logonzassa.png')}}" alt="">
+			</div>
+			<div class="medium-9 columns">
+				<div class="row">
+					<div class="columns connexion">
+						<a href="#" title="">
+				   	        <i class="fa fa-user fa-lg"></i> Connexion
+				        </a>
+					</div>
+				</div>
+				<!-- MENU POUR LARGE -->
+				<div class="row show-for-large">
+					<div class="columns">
+						<ul class="dropdown menu expanded" data-dropdown-menu>
+							<li class=""><a href="{{ path('homepage')}}" class="menu-titre">Accueil</a></li>
+							<li><a href="{{ path('fo_presentation') }}" class="menu-titre">Qui sommes-nous?</a></li>
+							<li><a href="#avantages-du-reseau-nzassa" class="menu-titre">Avantages</a></li>
+							<li class="is-dropdown-submenu-parent">
+								<a href="#" class="menu-titre">Communauté</a>
+								<ul class="menu">
+									<li><a href="#" title="">Annuaire</a></li>
+								</ul>
+							</li>
+							<li class=""><a href="#event" class="menu-titre">Evenements</a></li>
+							<li><a href="{{ path('fo_contact') }}" class="menu-titre">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- \MENU POUR LARGE -->
+				<!-- MENU POUR PETIT -->
+				<div class="row hide-for-large" data-hide-for="large">
+					<div class="columns" data-hide-for="large">
+						<ul class="dropdown menu vertical" data-dropdown-menu>
+							<li class="is-dropdown-submenu-parent">
+								<a href="#" class="menuV-titre">Menu</a>
+								<ul class="menu vertical">
+									<li><a href="#" title="">Accueil</a></li>
+									<li><a href="{{ path('fo_presentation') }}" class="menu-titre">Qui sommes-nous?</a></li>
+									<li><a href="#avantages-du-reseau-nzassa" class="menu-titre">Avantages</a></li>
+									<li class="is-dropdown-submenu-parent">
+										<a href="#" title="">Communauté</a>
+										<ul class="menu">
+											<li><a href="#" title="">Annuaire</a></li>
+										</ul>
+									</li>
+									<li><a href="#" title="">Evenements</a></li>
+									<li><a href="{{ path('fo_contact') }}" class="menu-titre">Contact</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- \MENU POUR PETIT -->
+			</div>
+		</div>
+	</section>
+	<section id="section-carousel hide-for-small-only">
+		<div class="orbit"  role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+		  <ul class="orbit-container">
+		    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+		    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+		    <li class="is-active orbit-slide">
+		      <img class="orbit-image" src="{{ asset('ressources/images/slider/1.jpeg')}}" alt="Space">
+		      <figcaption class="orbit-caption">L'infogérance de votre parc informatique</figcaption>
+		    </li>
+        {% for slider in sliders %}
+        <li class="orbit-slide">
+          <img class="orbit-image" src="{{ asset('ressources/images/slider/'~ slider.image.id ~ '.' ~ slider.image.url) }}" alt="{{ slider.titre }}">
+          <figcaption class="orbit-caption">{{ slider.description }}</figcaption>
+        </li>
+        {% endfor %}
+		  </ul>
+		</div>
+	</section>
+	<section id="section-domaine">
+		<div class="row" id="">
+			<div class="medium-6 medium-centered rnzassa-domaine" id="">
+				<div class="row small-up-3 medium-up-3 large-up-4">
+					{% for domaine in domaines %}
+          <div class="columns" href="#">
+            <a href="#" title="" class="tuile">
+              <h4>{{ domaine.libelle }}</h4>
+            </a>
+          </div>
+					{% endfor %}
+          <span id="avantages-du-reseau-nzassa"></span>
+				</div>
+        <span id="event"></span>
+			</div>
+		</div>
+	</section>
+	<section id="section-avantage">
+		<div class="row rnzassa-avantage">
+			<div class="medium-7 medium-offset-1 columns">
+				{% for avantage in avantages %}
+        <!-- {{ avantage.rubrique|upper }} -->
+        <div class="row" id="{{ avantage.slug }}">
+          <div class="columns">
+            <img src="{{ asset('ressources/images/avantages/' ~ avantage.image.id ~ '.' ~ avantage.image.url)}}" alt="{{ avantage.titre }}" class="gauche">
+            <h2>{{ avantage.titre }}</h2>
+            {{ avantage.contenu|raw }}
+          </div>
+        </div>
+        <!-- \{{ avantage.rubrique|upper }} -->
+        <hr>
+				{% endfor %}
+			</div>
+			<div class="medium-4 columns">
+				<div class="row">
+					<div class="columns">
+						<div class="rnzassa-evenement">
+							<h4>Evenements</h4>
+							{% for evenement in evenements %}
+              <div class="event-item" id="">
+                <a href="#event">
+                  {{ evenement.description }}
+                </a>
+                <blockquote class="blockquote blockquote-reverse">
+                  <footer>
+                    {{ evenement.datedeb|date('d-m-Y')}} à {{ evenement.lieu }}
+                  </footer>
+                </blockquote>
+              </div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				<!-- PUB -->
+				<div class="row">
+					<div class="columns">
+						<div class="rnzassa-pub">
+							<h4>Publicité</h4>
+							<div class="orbit"  role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+							  <ul class="orbit-container">
+							    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+							    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+							    <li class="is-active orbit-slide">
+							      <img class="orbit-image" src="{{ asset('ressources/images/publicite/1.jpeg')}}" alt="Space">
+							      <figcaption class="orbit-caption">L'infogérance de votre parc informatique</figcaption>
+							    </li>
+							    {% for publicite in publicites %}
+                  <li class="orbit-slide">
+                    <img class="orbit-image" src="{{ asset('ressources/images/publicite/'~ publicite.image.id ~ '.' ~ publicite.image.url) }}" alt="{{ publicite.libelle }}">
+                    <figcaption class="orbit-caption">{{ publicite.situation }}</figcaption>
+                  </li>
+							    {% endfor %}
+							  </ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- \PUB -->
+			</div>
+		</div>
+	</section>
+	<section id="section-footer">
+		  <!-- FOOTER -->
+	  <div class="nzassa-footer">
+	    <div class="nzassa-plan">
+	      <div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+	          <div class="row">
+	            <div class="col-xs-6 col-md-4">
+	              <h4>Réseau</h4>
+	              <div><a href="#">Adherer</a></div>
+	              <div><a href="#">Investir</a></div>
+	              <div><a href="#">Annuaire des membres</a></div>
+	              <div><a href="#">Communauté</a></div>
+	            </div>
+	            <div class="col-xs-6 col-md-4">
+	              <h4>Qui sommes-nous ?</h4>
+	              <div><a href="presentation.php">Presentation</a></div>
+	              <div><a href="#">Investisseurs</a></div>
+	              <div><a href="#">Formateurs/Encadreurs</a></div>
+	              <div><a href="#">Comment ça marche</a></div>
+	            </div>
+	            <div class="col-xs-6 col-md-4">
+	              <h4>Nous contacter</h4>
+	              <div><a href="#">Obtenir de l'aide</a></div>
+	              <div><a href="#">Demande de partenaariat</a></div>
+	              <div><a href="publicite.php">Faire de la publicité</a></div>
+	              <div><a href="contact.php">Contacter l'équipe</a></div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	      .
+	    </div>
+	    <div class="nzassa-copyright">
+	      <div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+	          &copy; Copyright Reseau Nzassa, Novembre 2016 | Tous droits reservés
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  <!-- \FOOTER -->
+	</section>
+
+	<script type="text/javascript" src="{{ asset('ressources/js/jquery-2.1.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/foundation/js/vendor/foundation.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/foundation/js/vendor/what-input.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/owl-carousel/owl.carousel.min.js')}}"></script>
+	<script type="text/javascript">$(document).foundation();</script>
+	<script>
+
+        $(document).ready(function() {
+
+            $("#owl-demo").owlCarousel({
+
+                autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+                items : 3,
+                itemsDesktop : [1199,3],
+                itemsDesktopSmall : [979,3]
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>

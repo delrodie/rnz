@@ -10,4 +10,31 @@ namespace AppBundle\Repository;
  */
 class PresentationRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+    * Recherche de l'article de la rubrique presentation
+    *
+    * Author: Delrodie AMOIKON
+    * Date: 14/02/2017
+    * Since: v1.0
+    */
+    public function getPresentation()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+            SELECT p
+            FROM AppBundle:Presentation p
+            WHERE p.statut = :stat
+        ')
+          ->setParameter('stat', 1)
+        ;
+        try {
+            $result = $qb->getResult();
+
+            return $result;
+
+        } catch (NoResultException $e) {
+            return $e;
+        }
+
+    }
 }

@@ -10,4 +10,35 @@ namespace AppBundle\Repository;
  */
 class PubliciteRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+  * Recherche des publicites actives
+  *
+  * Author: Delrodie AMOIKON
+  * Date: 14/02/2017
+  * Since: v1.0
+  */
+  public function getPublicite()
+  {
+      $em = $this->getEntityManager();
+      $qb = $em->createQuery('
+          SELECT p
+          FROM AppBundle:Publicite p
+          WHERE p.statut = :stat
+          AND p.datedeb <= :today
+          AND p.datefin >= :today
+          ORDER BY p.datedeb DESC
+      ')
+       ->setParameter('stat', 1)
+       ->setParameter('today', date('Y-m-d', time()))
+      ;
+      try {
+          $result = $qb->getResult();
+
+          return $result;
+
+      } catch (NoResultException $e) {
+          return $e;
+      }
+
+  }
 }
