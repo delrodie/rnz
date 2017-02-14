@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Beneficiaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ beneficiaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ beneficiaire.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenoms</th>
+                <td>{{ beneficiaire.prenoms }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ beneficiaire.slug }}</td>
+            </tr>
+            <tr>
+                <th>Naissance</th>
+                <td>{{ beneficiaire.naissance }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ beneficiaire.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Nationalite</th>
+                <td>{{ beneficiaire.nationalite }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ beneficiaire.matricule }}</td>
+            </tr>
+            <tr>
+                <th>Domicile</th>
+                <td>{{ beneficiaire.domicile }}</td>
+            </tr>
+            <tr>
+                <th>Flotte</th>
+                <td>{{ beneficiaire.flotte }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ beneficiaire.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Famille</th>
+                <td>{{ beneficiaire.famille }}</td>
+            </tr>
+            <tr>
+                <th>Enfant</th>
+                <td>{{ beneficiaire.enfant }}</td>
+            </tr>
+            <tr>
+                <th>Professionnel</th>
+                <td>{{ beneficiaire.professionnel }}</td>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <td>{{ beneficiaire.fonction }}</td>
+            </tr>
+            <tr>
+                <th>Bancaire</th>
+                <td>{% if beneficiaire.bancaire %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Banque</th>
+                <td>{{ beneficiaire.banque }}</td>
+            </tr>
+            <tr>
+                <th>Dateouverture</th>
+                <td>{{ beneficiaire.dateouverture }}</td>
+            </tr>
+            <tr>
+                <th>Vague</th>
+                <td>{{ beneficiaire.vague }}</td>
+            </tr>
+            <tr>
+                <th>Projet</th>
+                <td>{{ beneficiaire.projet }}</td>
+            </tr>
+            <tr>
+                <th>Entreprise</th>
+                <td>{{ beneficiaire.entreprise }}</td>
+            </tr>
+            <tr>
+                <th>Activite</th>
+                <td>{% if beneficiaire.activite %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dateactivite</th>
+                <td>{{ beneficiaire.dateactivite }}</td>
+            </tr>
+            <tr>
+                <th>Inscriptionat</th>
+                <td>{{ beneficiaire.inscriptionAt }}</td>
+            </tr>
+            <tr>
+                <th>Modificationat</th>
+                <td>{{ beneficiaire.modificationAt }}</td>
+            </tr>
+            <tr>
+                <th>Inscritpar</th>
+                <td>{{ beneficiaire.inscritPar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ beneficiaire.modifiePar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_beneficiaire_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_beneficiaire_edit', { 'id': beneficiaire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

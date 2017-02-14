@@ -124,10 +124,10 @@ class User extends BaseUser {
         return $this;
     }
 
-    function setGroups(Collection $groups = null) {
+    /*function setGroups(Collection $groups = null) {
         if ($groups !== null)
             $this->groups = $groups;
-    }
+    }*/
 
     public function setRoles(array $roles = array()) {
         $this->roles = array();

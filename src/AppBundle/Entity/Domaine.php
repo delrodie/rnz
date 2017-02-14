@@ -85,6 +85,12 @@ class Domaine
      */
     private $modifieLe;
 
+    // Gestion de la relation avec beneficiaire
+    /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Beneficiaire", mappedBy="domaine")
+    */
+    private $beneficiaires;
+
 
     /**
      * Get id
@@ -290,5 +296,46 @@ class Domaine
 
     public function __toString() {
         return $this->getLibelle();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->beneficiaires = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add beneficiaire
+     *
+     * @param \AppBundle\Entity\Beneficiaire $beneficiaire
+     *
+     * @return Domaine
+     */
+    public function addBeneficiaire(\AppBundle\Entity\Beneficiaire $beneficiaire)
+    {
+        $this->beneficiaires[] = $beneficiaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove beneficiaire
+     *
+     * @param \AppBundle\Entity\Beneficiaire $beneficiaire
+     */
+    public function removeBeneficiaire(\AppBundle\Entity\Beneficiaire $beneficiaire)
+    {
+        $this->beneficiaires->removeElement($beneficiaire);
+    }
+
+    /**
+     * Get beneficiaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBeneficiaires()
+    {
+        return $this->beneficiaires;
     }
 }
