@@ -87,7 +87,7 @@ class Domaine
 
     // Gestion de la relation avec beneficiaire
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Beneficiaire", mappedBy="domaine")
+    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Beneficiaire", mappedBy="domaines")
     */
     private $beneficiaires;
 
@@ -337,5 +337,39 @@ class Domaine
     public function getBeneficiaires()
     {
         return $this->beneficiaires;
+    }
+
+    /**
+     * Add recherch
+     *
+     * @param \AppBundle\Entity\Recherche $recherch
+     *
+     * @return Domaine
+     */
+    public function addRecherch(\AppBundle\Entity\Recherche $recherch)
+    {
+        $this->recherches[] = $recherch;
+
+        return $this;
+    }
+
+    /**
+     * Remove recherch
+     *
+     * @param \AppBundle\Entity\Recherche $recherch
+     */
+    public function removeRecherch(\AppBundle\Entity\Recherche $recherch)
+    {
+        $this->recherches->removeElement($recherch);
+    }
+
+    /**
+     * Get recherches
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRecherches()
+    {
+        return $this->recherches;
     }
 }

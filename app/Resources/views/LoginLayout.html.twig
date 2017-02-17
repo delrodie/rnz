@@ -3,13 +3,13 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="fr">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
 
     <head>
         <meta charset="utf-8" />
-        <title>{% block title %}Back Office | {% endblock %}</title>
+        <title>{% block title %}Reseau Nzassa {% endblock %}</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -34,15 +34,15 @@
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="{{ asset('ressources/images/favicon.png')}}" />
     </head>
     <!-- END HEAD -->
 
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
-                <img src="../assets/pages/img/logo-big.png" alt="" /> </a>
+            <a href="{{ path('homepage')}}">
+                <img src="{{ asset('ressources/images/logonzassa.png')}}" width="200" alt="Logo Reseau Nzassa"/> </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->

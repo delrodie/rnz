@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/owl-carousel/owl.theme.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/font-awesome-4.5.0/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('ressources/css/fornzassa.css')}}">
+	<link rel="shortcut icon" href="{{ asset('ressources/images/favicon.png')}}" />
 </head>
 <body>
 	<section id="section-menu" data-sticky-container>
@@ -20,7 +21,7 @@
 			<div class="medium-9 columns">
 				<div class="row">
 					<div class="columns connexion">
-						<a href="#" title="">
+						<a href="{{ path('fo_annuaire')}}" title="">
 				   	        <i class="fa fa-user fa-lg"></i> Connexion
 				        </a>
 					</div>
@@ -35,7 +36,7 @@
 							<li class="is-dropdown-submenu-parent">
 								<a href="#" class="menu-titre">Communauté</a>
 								<ul class="menu">
-									<li><a href="#" title="">Annuaire</a></li>
+									<li><a href="{{ path('fo_annuaire') }}" title="">Annuaire</a></li>
 								</ul>
 							</li>
 							<li class=""><a href="#event" class="menu-titre">Evenements</a></li>
@@ -57,7 +58,7 @@
 									<li class="is-dropdown-submenu-parent">
 										<a href="#" title="">Communauté</a>
 										<ul class="menu">
-											<li><a href="#" title="">Annuaire</a></li>
+											<li><a href="{{ path('fo_annuaire') }}" title="">Annuaire</a></li>
 										</ul>
 									</li>
 									<li><a href="#" title="">Evenements</a></li>
@@ -95,7 +96,7 @@
 				<div class="row small-up-3 medium-up-3 large-up-4">
 					{% for domaine in domaines %}
           <div class="columns" href="#">
-            <a href="#" title="" class="tuile">
+            <a href="{{ path('fo_annuaire_recherche', { 'domaine': domaine.id}) }}" title="" class="tuile">
               <h4>{{ domaine.libelle }}</h4>
             </a>
           </div>

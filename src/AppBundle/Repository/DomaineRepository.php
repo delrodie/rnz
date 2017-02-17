@@ -62,6 +62,5 @@ class DomaineRepository extends \Doctrine\ORM\EntityRepository
         } catch (NoResultException $e) {
             return $e;
         }
-
     }
 }

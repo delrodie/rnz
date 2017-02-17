@@ -34,6 +34,33 @@ class ZoneRepository extends \Doctrine\ORM\EntityRepository
         else{
             return $code = $recup;
         }
-
     }
+
+    /**
+      * Recherche de l'article de la rubrique zone
+      *
+      * Author: Delrodie AMOIKON
+      * Date: 14/02/2017
+      * Since: v1.0
+      */
+      public function getZone()
+      {
+          $em = $this->getEntityManager();
+          $qb = $em->createQuery('
+              SELECT z
+              FROM AppBundle:Zone z
+              WHERE z.desactivation = :stat
+              ORDER BY z.libelle ASC
+          ')
+            ->setParameter('stat', 0)
+          ;
+          try {
+              $result = $qb->getResult();
+
+              return $result;
+
+          } catch (NoResultException $e) {
+              return $e;
+          }
+      }
 }

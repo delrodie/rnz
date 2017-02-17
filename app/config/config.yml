@@ -8,6 +8,12 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    genders:
+      Tr: Treichville
+      Km: Koumassi
+      Ad: Adjame
+      Ab: Abobo
+      Yp: Yopougon
 
 framework:
     #esi:             ~

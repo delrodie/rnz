@@ -227,10 +227,10 @@ class Beneficiaire
     private $zone;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Domaine", inversedBy="beneficiaires")
+    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Domaine", inversedBy="beneficiaires")
     * @ORM\JoinColumn(name="domaine_id", referencedColumnName="id")
     */
-     private $domaine;
+     private $domaines;
 
      /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Photo", cascade={"persist"})
@@ -966,5 +966,46 @@ class Beneficiaire
     public function getPhoto()
     {
         return $this->photo;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->domaines = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add domaine
+     *
+     * @param \AppBundle\Entity\Domaine $domaine
+     *
+     * @return Beneficiaire
+     */
+    public function addDomaine(\AppBundle\Entity\Domaine $domaine)
+    {
+        $this->domaines[] = $domaine;
+
+        return $this;
+    }
+
+    /**
+     * Remove domaine
+     *
+     * @param \AppBundle\Entity\Domaine $domaine
+     */
+    public function removeDomaine(\AppBundle\Entity\Domaine $domaine)
+    {
+        $this->domaines->removeElement($domaine);
+    }
+
+    /**
+     * Get domaines
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDomaines()
+    {
+        return $this->domaines;
     }
 }

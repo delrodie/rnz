@@ -338,4 +338,38 @@ class Zone
     {
         return $this->beneficiaires;
     }
+
+    /**
+     * Add recherch
+     *
+     * @param \AppBundle\Entity\Recherche $recherch
+     *
+     * @return Zone
+     */
+    public function addRecherch(\AppBundle\Entity\Recherche $recherch)
+    {
+        $this->recherches[] = $recherch;
+
+        return $this;
+    }
+
+    /**
+     * Remove recherch
+     *
+     * @param \AppBundle\Entity\Recherche $recherch
+     */
+    public function removeRecherch(\AppBundle\Entity\Recherche $recherch)
+    {
+        $this->recherches->removeElement($recherch);
+    }
+
+    /**
+     * Get recherches
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRecherches()
+    {
+        return $this->recherches;
+    }
 }
