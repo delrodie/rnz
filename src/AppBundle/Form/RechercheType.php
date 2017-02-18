@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 use AppBundle\Form\GenderType;
 
@@ -33,6 +34,9 @@ class RechercheType extends AbstractType
                       'placeholder' => 'Entrez le domaine de recherche'
                   ),
                   'required'  => true
+            ))
+            ->add('page', HiddenType::class, array(
+              'data' => '1',
             ))
         ;
     }

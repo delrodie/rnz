@@ -38,7 +38,7 @@
 							<li class="is-dropdown-submenu-parent">
 								<a href="#" class="menu-titre">Communauté</a>
 								<ul class="menu">
-									<li><a href="{{ path('fo_annuaire') }}" title="">Annuaire</a></li>
+									<li><a href="{{ path('fo_annuaire', {'page': 1}) }}" title="">Annuaire</a></li>
 								</ul>
 							</li>
 							<li class=""><a href="#event" class="menu-titre">Evenements</a></li>
@@ -60,7 +60,7 @@
 									<li class="is-dropdown-submenu-parent">
 										<a href="#" title="">Communauté</a>
 										<ul class="menu">
-											<li><a href="{{ path('fo_annuaire') }}" title="">Annuaire</a></li>
+											<li><a href="{{ path('fo_annuaire', {'page': 1}) }}" title="">Annuaire</a></li>
 										</ul>
 									</li>
 									<li><a href="#event" title="">Evenements</a></li>
@@ -79,8 +79,8 @@
 			<div class="filigrane">
 				<div class="row">
 					<div class="medium-8 medium-centered columns text-center">
-            <!--<form class="form-horizontal" action="{{ path('fo_annuaire_liste')}}" method="get" name="appbundle_recherche">-->
-						{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            <form class="form-horizontal" action="{{ path('recherche_new', {'page': 1 })}}" method="post" name="appbundle_recherche">
+						<!--{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}-->
 							<div class="formulaire">
 							<div class="row">
 								<div class="medium-5 columns">
@@ -104,6 +104,7 @@
 									{{ form_errors(form.domaine) }}
 								</div>
 								<div class="medium-2 columns text-left">
+
 									<!--<input type="hidden" id="appbundle_recherche__token" name="appbundle_recherche[_token]" value="Z2QcKNQPThRRb-QaP5ff48Iyj_UZCOpEjNJWX9sjIo8" />-->
 									<input type="submit" class="btn blue" value="Rechercher">
 								</div>
@@ -140,41 +141,37 @@
 					<!-- Annuaire -->
 					<div class="medium-8 columns rnzassa-annuaire-liste">
 						<h2>Lise des professionnels du Réseau Nzassa</h2>
-						{% if beneficiaires is not empty %}
-              {% for beneficiaire in beneficiaires %}
-  						<div class="rnzassa-tuile">
-  							<div class="row">
-  								<div class="small-3 medium-3 columns">
-  									<img src="{{ asset('uploads/' ~ beneficiaire.photo.id ~ '.' ~ beneficiaire.photo.url)}}" alt="{{ beneficiaire.nom }} {{ beneficiaire.prenoms }}" class="gauche portrait">
-  								</div>
-  								<div class="small-9 medium-9 columns">
-  									<h4>{{ beneficiaire.nom }} {{ beneficiaire.prenoms }}</h4>
-  									<h6>
-                      {% for domaine in beneficiaire.domaines %}
-                          {{ domaine.libelle|capitalize }} à
-                      {% endfor %}
-  										{{ beneficiaire.zone|capitalize }}
-  									</h6>
-  									<div class="description">
-  										{{ beneficiaire.entreprise }} <br>
-  										{{ beneficiaire.projet|capitalize }}
-  									</div>
-  									<div class="contact">
-  										<div class="gauche btn btn-default">
-  											{{ beneficiaire.user.email }}
-  										</div>
-  										<div class="droite btn btn-default">
-  											{{ beneficiaire.flotte }} / {{ beneficiaire.telephone }}
-  										</div>
-  									</div>
-  								</div>
-  							</div>
-  						</div>
-  						{% endfor %}
-            {% else %}
-                <p>Aucun professionnel trouvé</p>
-            {% endif %}
-
+						{% for beneficiaire in beneficiaires %}
+						<div class="rnzassa-tuile">
+							<div class="row">
+								<div class="small-3 medium-3 columns">
+									<img src="{{ asset('uploads/' ~ beneficiaire.photo.id ~ '.' ~ beneficiaire.photo.url)}}" alt="{{ beneficiaire.nom }} {{ beneficiaire.prenoms }}" class="gauche portrait">
+								</div>
+								<div class="small-9 medium-9 columns">
+									<h4>{{ beneficiaire.nom }} {{ beneficiaire.prenoms }}</h4>
+									<h6>
+                    {% for domaine in beneficiaire.domaines %}
+                        {{ domaine.libelle|capitalize }} à
+                    {% endfor %}
+										{{ beneficiaire.zone|capitalize }}
+									</h6>
+									<div class="description">
+										{{ beneficiaire.entreprise }} <br>
+										{{ beneficiaire.projet|capitalize }}
+									</div>
+									<div class="contact">
+										<div class="gauche btn btn-default">
+											{{ beneficiaire.user.email }}
+										</div>
+										<div class="droite btn btn-default">
+											{{ beneficiaire.flotte }} / {{ beneficiaire.telephone }}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						{% include 'menu/pagination2.html.twig' %}
 					</div>
 					<!-- \Annuaire -->
 					<div class="medium-4 columns">

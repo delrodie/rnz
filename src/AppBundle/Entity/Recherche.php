@@ -31,6 +31,11 @@ class Recherche
     */
     private $domaine;
 
+    /**
+    * @ORM\Column(name="page", type="integer")
+    */
+    private $page;
+
 
     /**
      * Get id
@@ -88,5 +93,29 @@ class Recherche
     public function getDomaine()
     {
         return $this->domaine;
+    }
+
+    /**
+     * Set page
+     *
+     * @param integer $page
+     *
+     * @return Recherche
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return integer
+     */
+    public function getPage()
+    {
+        return $this->page;
     }
 }

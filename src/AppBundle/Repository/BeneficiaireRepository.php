@@ -2,6 +2,10 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use InvalidArgumentException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * BeneficiaireRepository
  *
@@ -11,41 +15,107 @@ namespace AppBundle\Repository;
 class BeneficiaireRepository extends \Doctrine\ORM\EntityRepository
 {
   /**
-    * Recherche de l'article de la rubrique avantage
+    * Liste de bénéficiares ordonnés et paginés
+    *
+    * @param int $page Le numéro de la page
+    * @param int $nbMaxParPage Nombre maximum de bnéficiaire par page
+    *
+    * @throws InvalidArgumentException
+    * @throws NotFoundHttpException
+    *
+    * @return Paginator
     *
     * Author: Delrodie AMOIKON
     * Date: 14/02/2017
     * Since: v1.0
     */
-    public function getBeneficiaire()
+    public function getBeneficiaire($page, $nbMaxParPage)
     {
         $em = $this->getEntityManager();
-        $qb = $em->createQuery('
+
+        if (!is_numeric($page)) {
+            throw new InvalidArgumentException(
+                'La valeur de l\'argument $page est incorrecte (valeur : ' . $page . ').'
+            );
+        }
+
+        if ($page < 1) {
+            throw new NotFoundHttpException('La page demandée n\'existe pas');
+        }
+
+        if (!is_numeric($nbMaxParPage)) {
+            throw new InvalidArgumentException(
+                'La valeur de l\'argument $nbMaxParPage est incorrecte (valeur : ' . $nbMaxParPage . ').'
+            );
+        }
+
+        /*$qb = $em->createQuery('
             SELECT b
             FROM AppBundle:Beneficiaire b
             ORDER BY b.nom ASC
         ')
-        ;
-        try {
+        ;*/
+
+        $qb = $this->createQueryBuilder('b')
+            ->orderBy('b.nom', 'ASC');
+
+        $query = $qb->getQuery();
+
+        $premierResultat = ($page - 1) * $nbMaxParPage;
+        $query->setFirstResult($premierResultat)->setMaxResults($nbMaxParPage);
+        $paginator = new Paginator($query);
+
+        if ( ($paginator->count() <= $premierResultat) && $page != 1) {
+            throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404, sauf pour la première page
+        }
+
+        return $paginator;
+
+        /*try {
             $result = $qb->getResult();
 
             return $result;
 
         } catch (NoResultException $e) {
             return $e;
-        }
+        }*/
     }
 
     /**
-      * Recherche de l'article de la rubrique avantage
+      * Liste de bénéficiares ordonnés et paginés
+      *
+      * @param int $page Le numéro de la page
+      * @param int $nbMaxParPage Nombre maximum de bnéficiaire par page
+      *
+      * @throws InvalidArgumentException
+      * @throws NotFoundHttpException
+      *
+      * @return Paginator
       *
       * Author: Delrodie AMOIKON
       * Date: 14/02/2017
       * Since: v1.0
       */
-      public function getAnnuaire($zone, $domaine)
+      public function getAnnuaire($zone, $domaine, $page, $nbMaxParPage)
       {
           $em = $this->getEntityManager();
+
+          if (!is_numeric($page)) {
+              throw new InvalidArgumentException(
+                  'La valeur de l\'argument $page est incorrecte (valeur : ' . $page . ').'
+              );
+          }
+
+          if ($page < 1) {
+              throw new NotFoundHttpException('La page demandée n\'existe pas');
+          }
+
+          if (!is_numeric($nbMaxParPage)) {
+              throw new InvalidArgumentException(
+                  'La valeur de l\'argument $nbMaxParPage est incorrecte (valeur : ' . $nbMaxParPage . ').'
+              );
+          }
+
           $qb = $em->createQuery('
               SELECT b, d, z
               FROM AppBundle:Beneficiaire b
@@ -58,26 +128,62 @@ class BeneficiaireRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('domaine', $domaine)
             ->setParameter('zone', $zone)
           ;
-          try {
+
+          $premierResultat = ($page - 1) * $nbMaxParPage;
+          $qb->setFirstResult($premierResultat)->setMaxResults($nbMaxParPage);
+          $paginator = new Paginator($qb);
+
+          if ( ($paginator->count() <= $premierResultat) && $page != 1) {
+              throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404, sauf pour la première page
+          }
+
+          return $paginator;
+
+          /*try {
               $result = $qb->getResult();
 
               return $result;
 
           } catch (NoResultException $e) {
               return $e;
-          }
+          }*/
       }
 
       /**
-        * Recherche de l'article de la rubrique Beneficiare par la zone
+        * Liste de bénéficiares ordonnés et paginés
+        *
+        * @param int $page Le numéro de la page
+        * @param int $nbMaxParPage Nombre maximum de bnéficiaire par page
+        *
+        * @throws InvalidArgumentException
+        * @throws NotFoundHttpException
+        *
+        * @return Paginator
         *
         * Author: Delrodie AMOIKON
         * Date: 14/02/2017
         * Since: v1.0
         */
-        public function getAnnuaireByDomaine($domaine)
+        public function getAnnuaireByDomaine($domaine, $page, $nbMaxParPage)
         {
             $em = $this->getEntityManager();
+
+            if (!is_numeric($page)) {
+                throw new InvalidArgumentException(
+                    'La valeur de l\'argument $page est incorrecte (valeur : ' . $page . ').'
+                );
+            }
+
+            if ($page < 1) {
+                throw new NotFoundHttpException('La page demandée n\'existe pas');
+            }
+
+            if (!is_numeric($nbMaxParPage)) {
+                throw new InvalidArgumentException(
+                    'La valeur de l\'argument $nbMaxParPage est incorrecte (valeur : ' . $nbMaxParPage . ').'
+                );
+            }
+
             $qb = $em->createQuery('
                 SELECT b, d
                 FROM AppBundle:Beneficiaire b
@@ -87,13 +193,26 @@ class BeneficiaireRepository extends \Doctrine\ORM\EntityRepository
             ')
               ->setParameter('domaine', $domaine)
             ;
-            try {
+
+            //$query = $qb->getQuery();
+
+            $premierResultat = ($page - 1) * $nbMaxParPage;
+            $qb->setFirstResult($premierResultat)->setMaxResults($nbMaxParPage);
+            $paginator = new Paginator($qb);
+
+            if ( ($paginator->count() <= $premierResultat) && $page != 1) {
+                throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404, sauf pour la première page
+            }
+
+            return $paginator;
+
+            /*try {
                 $result = $qb->getResult();
 
                 return $result;
 
             } catch (NoResultException $e) {
                 return $e;
-            }
+            }*/
         }
 }

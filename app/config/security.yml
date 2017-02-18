@@ -54,4 +54,5 @@ security:
         #- { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/annuaire, role: ROLE_USER }
+        - { path: ^/annuaires, role: ROLE_USER }
         - { path: ^/forum, role: ROLE_USER }

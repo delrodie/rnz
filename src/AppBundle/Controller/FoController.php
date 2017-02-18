@@ -76,21 +76,32 @@ class FoController extends Controller
     }
 
     /**
-     * @Route("/annuaires/", name="fo_annuaire")
+     * @Route("/annuaires/{page}/Listes-de-tous-les-professionnels-du-reseau-nzassa", requirements={"page" = "\d+"}, name="fo_annuaire")
+     *
+     * @param int $page Le numéro de la page
      */
-    public function annuaireAction(Request $request)
+    public function annuaireAction(Request $request, $page)
     {
       $recherche = new Recherche();
       $em = $this->getDoctrine()->getManager();
       $form = $this->createForm('AppBundle\Form\RechercheType', $recherche);
       $form->handleRequest($request);
 
+      $nbBeneficiairesParPage = 10;
+
         $sliders = $em->getRepository('AppBundle:Slider')->getArticle();
         $domaines = $em->getRepository('AppBundle:Domaine')->getDomaine();
         $zones = $em->getRepository('AppBundle:Zone')->getZone();
-        $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getBeneficiaire();
+        $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getBeneficiaire($page, $nbBeneficiairesParPage);
         $evenements = $em->getRepository('AppBundle:Evenement')->getEvenement();
         $publicites = $em->getRepository('AppBundle:Publicite')->getPublicite();
+
+        $pagination = array(
+            'page' => $page,
+            'nbPages' => ceil(count($beneficiaires) / $nbBeneficiairesParPage),
+            'nomRoute' => 'fo_annuaire',
+            'paramsRoute' => array()
+        );
 
         return $this->render('fo/annuaire.html.twig', array(
             'sliders' => $sliders,
@@ -101,29 +112,41 @@ class FoController extends Controller
             'publicites' => $publicites,
             'recherche' => $recherche,
             'form' => $form->createView(),
+            'pagination' => $pagination,
         ));
     }
 
     /**
-     * @Route("/annuaires/{domaine}/liste-des-professionels", name="fo_annuaire_recherche")
+     * @Route("/annuaires/{page}/liste-des-professionels-du-domaine-{libelle}{domaine}", requirements={"page" = "\d+"}, name="fo_annuaire_recherche")
+     *
+     * @param int $page Le numéro de la page
      */
-    public function annuairesAction(Request $request, $domaine = null, $zone = null)
+    public function annuairesAction(Request $request, $domaine = null, $zone = null, $libelle = null, $page)
     {
         $recherche = new Recherche();
         $form = $this->createForm('AppBundle\Form\RechercheType', $recherche);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
 
+        $nbBeneficiairesParPage = 10;
+
         $sliders = $em->getRepository('AppBundle:Slider')->getArticle();
         $domaines = $em->getRepository('AppBundle:Domaine')->getDomaine();
         $zones = $em->getRepository('AppBundle:Zone')->getZone();
-        $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getAnnuaireByDomaine($domaine);
+        $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getAnnuaireByDomaine($domaine, $page, $nbBeneficiairesParPage);
         $evenements = $em->getRepository('AppBundle:Evenement')->getEvenement();
         $publicites = $em->getRepository('AppBundle:Publicite')->getPublicite();
-        //var_dump($beneficiaires);
-        //die();
 
-        return $this->render('fo/annuaire.html.twig', array(
+        $pagination = array(
+            'page' => $page,
+            'domaine' => $domaine,
+            'libelle' => $libelle,
+            'nbPages' => ceil(count($beneficiaires) / $nbBeneficiairesParPage),
+            'nomRoute' => 'fo_annuaire_recherche',
+            'paramsRoute' => array()
+        );
+
+        return $this->render('fo/annuaire-domaine.html.twig', array(
             'sliders' => $sliders,
             'domaines' => $domaines,
             'zones' => $zones,
@@ -132,6 +155,50 @@ class FoController extends Controller
             'publicites' => $publicites,
             'recherche' => $recherche,
             'form' => $form->createView(),
+            'pagination' => $pagination,
+        ));
+    }
+
+    /**
+     * @Route("/annuaires/{page}/liste{zone}-des-professionels{domaine}", requirements={"page" = "\d+"}, name="fo_annuaire_recherche_page")
+     *
+     * @param int $page Le numéro de la page
+     */
+    public function rechercheAction(Request $request, $domaine, $zone, $page)
+    {
+        $recherche = new Recherche();
+        $form = $this->createForm('AppBundle\Form\RechercheType', $recherche);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+
+        $nbBeneficiairesParPage = 10;
+
+        $sliders = $em->getRepository('AppBundle:Slider')->getArticle();
+        $domaines = $em->getRepository('AppBundle:Domaine')->getDomaine();
+        $zones = $em->getRepository('AppBundle:Zone')->getZone();
+        $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getAnnuaire($zone, $domaine, $page, $nbBeneficiairesParPage);
+        $evenements = $em->getRepository('AppBundle:Evenement')->getEvenement();
+        $publicites = $em->getRepository('AppBundle:Publicite')->getPublicite();
+
+        $pagination = array(
+            'page' => $page,
+            'nbPages' => ceil(count($beneficiaires) / $nbBeneficiairesParPage),
+            'nomRoute' => 'fo_annuaire_recherche_page',
+            'paramsRoute' => array(),
+            'zone'  => $zone,
+            'domaine' => $domaine
+        );
+
+        return $this->render('recherche/new.html.twig', array(
+            'sliders' => $sliders,
+            'domaines' => $domaines,
+            'zones' => $zones,
+            'beneficiaires' => $beneficiaires,
+            'evenements' => $evenements,
+            'publicites' => $publicites,
+            'recherche' => $recherche,
+            'form' => $form->createView(),
+            'pagination' => $pagination,
         ));
     }
 

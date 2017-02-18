@@ -34,15 +34,20 @@ class RechercheController extends Controller
     /**
      * Creates a new recherche entity.
      *
-     * @Route("/liste-des-professionels", name="recherche_new")
+     * @Route("/liste-des-professionels/{page}", name="recherche_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $page)
     {
         $recherche = new Recherche();
         $form = $this->createForm('AppBundle\Form\RechercheType', $recherche);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
+
+        // Initialisation de session
+        $session = $request->getSession();
+
+        $nbBeneficiairesParPage = 10;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -51,16 +56,32 @@ class RechercheController extends Controller
             //return $this->redirectToRoute('recherche_show', array('id' => $recherche->getId()));
             $zone = $recherche->getZone();
             $domaine = $recherche->getDomaine();
-            //die($domaine);
+
+            // Sauvegarde des sessions
+            $zoneSave = $session->set($zone, $recherche->getZone());
+            $domaineSave = $session->set($domaine, $recherche->getDomaine());
+            //die($zoneSave);
+
+            $page = $recherche->getPage();
+            //die($page);
 
             $sliders = $em->getRepository('AppBundle:Slider')->getArticle();
             $domaines = $em->getRepository('AppBundle:Domaine')->getDomaine();
             $zones = $em->getRepository('AppBundle:Zone')->getZone();
-            $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getAnnuaire($zone, $domaine);
+            $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getAnnuaire($zone, $domaine, $page, $nbBeneficiairesParPage);
             $evenements = $em->getRepository('AppBundle:Evenement')->getEvenement();
             $publicites = $em->getRepository('AppBundle:Publicite')->getPublicite();
 
-            return $this->render('fo/annuaire.html.twig', array(
+            $pagination = array(
+                'page' => $page,
+                'zone'  => $zone,
+                'domaine' => $domaine,
+                'nbPages' => ceil(count($beneficiaires) / $nbBeneficiairesParPage),
+                'nomRoute' => 'fo_annuaire_recherche_page',
+                'paramsRoute' => array(),
+            );
+
+            return $this->render('recherche/new.html.twig', array(
                 'sliders' => $sliders,
                 'domaines' => $domaines,
                 'zones' => $zones,
@@ -69,15 +90,26 @@ class RechercheController extends Controller
                 'publicites' => $publicites,
                 'recherche' => $recherche,
                 'form' => $form->createView(),
+                'pagination' => $pagination,
             ));
         }
+
+        //$zone = $zoneSave;
+        //$domaine = $domaineSave;
 
         $sliders = $em->getRepository('AppBundle:Slider')->getArticle();
         $domaines = $em->getRepository('AppBundle:Domaine')->getDomaine();
         $zones = $em->getRepository('AppBundle:Zone')->getZone();
-        $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getBeneficiaire();
+        $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getBeneficiaire($page, $nbBeneficiairesParPage);
         $evenements = $em->getRepository('AppBundle:Evenement')->getEvenement();
         $publicites = $em->getRepository('AppBundle:Publicite')->getPublicite();
+
+        $pagination = array(
+            'page' => $page,
+            'nbPages' => ceil(count($beneficiaires) / $nbBeneficiairesParPage),
+            'nomRoute' => 'recherche_new',
+            'paramsRoute' => array()
+        );
 
         return $this->render('fo/annuaire.html.twig', array(
             'recherche' => $recherche,
@@ -88,6 +120,7 @@ class RechercheController extends Controller
             'beneficiaires' => $beneficiaires,
             'evenements' => $evenements,
             'publicites' => $publicites,
+            'pagination' => $pagination,
         ));
     }
 
