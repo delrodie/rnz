@@ -75,8 +75,8 @@
               <td class="text-center">{{ beneficiaire.flotte }} / {{ beneficiaire.telephone }}</td>
               <td>{{ beneficiaire.zone.libelle|capitalize }}</td>
               <td>
-                {% for domaine in beneficiaire.domaine %}
-                    domaine.libelle
+                {% for domaine in beneficiaire.domaines %}
+                    {{ domaine.libelle|capitalize }} à
                 {% endfor %}
               </td>
               <td>{{ beneficiaire.projet|capitalize }}</td>

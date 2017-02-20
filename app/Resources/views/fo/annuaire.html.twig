@@ -90,22 +90,10 @@
 							<div class="formulaire">
 							<div class="row">
 								<div class="medium-5 columns">
-									<!--<select name="appbundle_recherche[zone]" class="form-control select-zone" id="appbundle_recherche_zone" >
-											<option value="">Selectionnez la zone</option>
-										{% for zone in zones %}
-										    <option value="{{ zone.id }}" class="form-control">{{ zone.libelle|capitalize }}</option>
-										{% endfor %}
-									</select>-->
 									{{ form_widget(form.zone) }}
 									{{ form_errors(form.zone) }}
 								</div>
 								<div class="medium-5 columns">
-									<!--<select name="appbundle_recherche[domaine]" class="form-control select-domaine" id="appbundle_recherche_domaine">
-											<option value="">Selectionnez le domaine</option>
-										{% for domaine in domaines %}
-										    <option value="{{ domaine.id }}" class="form-control">{{ domaine.libelle|capitalize }}</option>
-										{% endfor %}
-									</select>-->
 									{{ form_widget(form.domaine) }}
 									{{ form_errors(form.domaine) }}
 								</div>
@@ -123,23 +111,6 @@
 			</div>
 		</div>
 	</section>
-	<!--<section id="section-domaine">
-		<div class="row" id="">
-			<div class="medium-6 medium-centered rnzassa-domaine" id="">
-				<div class="row small-up-3 medium-up-3 large-up-4">
-					{% for domaine in domaines %}
-          <div class="columns" href="#">
-            <a href="#" title="" class="tuile">
-              <h4>{{ domaine.libelle }}</h4>
-            </a>
-          </div>
-					{% endfor %}
-          <span id="presentations-du-reseau-nzassa"></span>
-				</div>
-        <span id="event"></span>
-			</div>
-		</div>
-	</section>-->
 	<section id="section-annuaire">
 		<div class="row">
 			<div class="medium-11 medium-offset-1 columns">
