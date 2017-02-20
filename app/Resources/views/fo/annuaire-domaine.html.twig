@@ -23,9 +23,15 @@
 			<div class="medium-9 columns">
 				<div class="row">
 					<div class="columns connexion">
-						<a href="#" title="">
-				   	        <i class="fa fa-user fa-lg"></i> Connexion
-				        </a>
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							<a href="{{ path('fos_user_security_logout')}}" title="">
+									<i class="fa fa-user fa-lg"></i> Déconnexion
+							</a>
+						{% else %}
+								<a href="{{ path('fo_annuaire', {'page': 1})}}" title="">
+										<i class="fa fa-user fa-lg"></i> Connexion
+								</a>
+						{% endif %}
 					</div>
 				</div>
 				<!-- MENU POUR LARGE -->

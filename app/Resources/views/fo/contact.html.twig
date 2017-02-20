@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/owl-carousel/owl.theme.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/font-awesome-4.5.0/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{ asset('ressources/css/fornzassa.css')}}">
+	<link rel="shortcut icon" href="{{ asset('ressources/images/favicon.png')}}" />
 </head>
 <body>
 	<section id="section-menu" data-sticky-container>
@@ -20,9 +21,15 @@
 			<div class="medium-9 columns">
 				<div class="row">
 					<div class="columns connexion">
-						<a href="{{ path('fo_annuaire', {'page': 1})}}" title="">
-				   	        <i class="fa fa-user fa-lg"></i> Connexion
-				        </a>
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							<a href="{{ path('fos_user_security_logout')}}" title="">
+									<i class="fa fa-user fa-lg"></i> Déconnexion
+							</a>
+						{% else %}
+								<a href="{{ path('fo_annuaire', {'page': 1})}}" title="">
+										<i class="fa fa-user fa-lg"></i> Connexion
+								</a>
+						{% endif %}
 					</div>
 				</div>
 				<!-- MENU POUR LARGE -->
@@ -82,23 +89,7 @@
 			</div>
 		</div>
 	</section>
-	<!--<section id="section-domaine">
-		<div class="row" id="">
-			<div class="medium-6 medium-centered rnzassa-domaine" id="">
-				<div class="row small-up-3 medium-up-3 large-up-4">
-					{% for domaine in domaines %}
-          <div class="columns" href="#">
-            <a href="#" title="" class="tuile">
-              <h4>{{ domaine.libelle }}</h4>
-            </a>
-          </div>
-					{% endfor %}
-          <span id="presentations-du-reseau-nzassa"></span>
-				</div>
-        <span id="event"></span>
-			</div>
-		</div>
-	</section>-->
+
 	<section id="section-avantage">
 		<div class="row rnzassa-avantage">
 			<div class="medium-7 medium-offset-1 columns">
@@ -174,12 +165,12 @@
 	              <h4>Réseau</h4>
 	              <div><a href="#">Adherer</a></div>
 	              <div><a href="#">Investir</a></div>
-	              <div><a href="#">Annuaire des membres</a></div>
+	              <div><a href="{{ path('fo_annuaire', {'page': 1})}}">Annuaire des membres</a></div>
 	              <div><a href="#">Communauté</a></div>
 	            </div>
 	            <div class="col-xs-6 col-md-4">
 	              <h4>Qui sommes-nous ?</h4>
-	              <div><a href="#">Presentation</a></div>
+	              <div><a href="{{ path('fo_presentation')}}">Presentation</a></div>
 	              <div><a href="#">Investisseurs</a></div>
 	              <div><a href="#">Formateurs/Encadreurs</a></div>
 	              <div><a href="#">Comment ça marche</a></div>
@@ -187,9 +178,9 @@
 	            <div class="col-xs-6 col-md-4">
 	              <h4>Nous contacter</h4>
 	              <div><a href="#">Obtenir de l'aide</a></div>
-	              <div><a href="#">Demande de partenaariat</a></div>
-	              <div><a href="publicite.php">Faire de la publicité</a></div>
-	              <div><a href="contact.php">Contacter l'équipe</a></div>
+	              <div><a href="#">Demande de partenariat</a></div>
+	              <div><a href="{{ path('fo_contact')}}">Faire de la publicité</a></div>
+	              <div><a href="{{ path('fo_contact') }}">Contacter l'équipe</a></div>
 	            </div>
 	          </div>
 	        </div>

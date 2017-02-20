@@ -21,9 +21,15 @@
 			<div class="medium-9 columns">
 				<div class="row">
 					<div class="columns connexion">
-						<a href="{{ path('fo_annuaire', {'page': 1})}}" title="">
-				   	        <i class="fa fa-user fa-lg"></i> Connexion
-				        </a>
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							<a href="{{ path('fos_user_security_logout')}}" title="">
+									<i class="fa fa-user fa-lg"></i> Déconnexion
+							</a>
+						{% else %}
+								<a href="{{ path('fo_annuaire', {'page': 1})}}" title="">
+										<i class="fa fa-user fa-lg"></i> Connexion
+								</a>
+						{% endif %}
 					</div>
 				</div>
 				<!-- MENU POUR LARGE -->
@@ -92,8 +98,8 @@
 	</section>
 	<section id="section-domaine">
 		<div class="row" id="">
-			<div class="medium-6 medium-centered rnzassa-domaine" id="">
-				<div class="row small-up-3 medium-up-3 large-up-4">
+			<div class="medium-9 medium-centered rnzassa-domaine" id="">
+				<div class="row small-up-6 medium-up-6 large-up-6">
 					{% for domaine in domaines %}
           <div class="columns" href="#">
             <a href="{{ path('fo_annuaire_recherche', { 'domaine': domaine.id, 'libelle': domaine.libelle, 'page': 1}) }}" title="" class="tuile">
@@ -187,7 +193,7 @@
 	            </div>
 	            <div class="col-xs-6 col-md-4">
 	              <h4>Qui sommes-nous ?</h4>
-	              <div><a href="presentation.php">Presentation</a></div>
+	              <div><a href="#">Presentation</a></div>
 	              <div><a href="#">Investisseurs</a></div>
 	              <div><a href="#">Formateurs/Encadreurs</a></div>
 	              <div><a href="#">Comment ça marche</a></div>
@@ -196,8 +202,8 @@
 	              <h4>Nous contacter</h4>
 	              <div><a href="#">Obtenir de l'aide</a></div>
 	              <div><a href="#">Demande de partenaariat</a></div>
-	              <div><a href="publicite.php">Faire de la publicité</a></div>
-	              <div><a href="contact.php">Contacter l'équipe</a></div>
+	              <div><a href="#">Faire de la publicité</a></div>
+	              <div><a href="#">Contacter l'équipe</a></div>
 	            </div>
 	          </div>
 	        </div>

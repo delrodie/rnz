@@ -25,4 +25,11 @@
 /web/uploads/*.jpeg
 /web/uploads/*.jpg
 /web/uploads/*.gif
+/web/uploads/**/*.png
+/web/uploads/**/*.jpeg
+/web/uploads/**/*.jpg
+/web/uploads/**/*.gif
 /reseaunzdidb.sql
+/web/*.php
+/web/app_dev.php
+/web/config.php
