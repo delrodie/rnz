@@ -227,9 +227,19 @@ class Beneficiaire
     private $zone;
 
     /**
-    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Domaine", inversedBy="beneficiaires")
-    * @ORM\JoinColumn(name="domaine_id", referencedColumnName="id")
-    */
+
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Domaine")
+
+     * @ORM\JoinTable(name="beneficiaires_domaines",
+
+     *      joinColumns={@ORM\JoinColumn(name="beneficiaire_id", referencedColumnName="id")},
+
+     *      inverseJoinColumns={@ORM\JoinColumn(name="domaine_id", referencedColumnName="id")}
+
+     *      )
+
+     */
+
      private $domaines;
 
      /**

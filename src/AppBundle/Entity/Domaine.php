@@ -83,13 +83,7 @@ class Domaine
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="modifie_le", type="datetimetz", nullable=true)
      */
-    private $modifieLe;
-
-    // Gestion de la relation avec beneficiaire
-    /**
-    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Beneficiaire", mappedBy="domaines")
-    */
-    private $beneficiaires;
+    private $modifieLe;    
 
 
     /**
