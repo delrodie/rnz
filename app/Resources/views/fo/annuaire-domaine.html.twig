@@ -24,9 +24,9 @@
 				<div class="row">
 					<div class="columns connexion">
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-							<a href="{{ path('fos_user_security_logout')}}" title="">
+							<!--<a href="{{ path('fos_user_security_logout')}}" title="">
 									<i class="fa fa-user fa-lg"></i> Déconnexion
-							</a>
+							</a>-->
 						{% else %}
 								<a href="{{ path('fo_annuaire', {'page': 1})}}" title="">
 										<i class="fa fa-user fa-lg"></i> Connexion
