@@ -72,6 +72,9 @@ class RechercheController extends Controller
             $evenements = $em->getRepository('AppBundle:Evenement')->getEvenement();
             $publicites = $em->getRepository('AppBundle:Publicite')->getPublicite();
 
+            //var_dump($beneficiaires);
+            //die();
+
             $pagination = array(
                 'page' => $page,
                 'zone'  => $zone,

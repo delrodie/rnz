@@ -117,11 +117,11 @@ class FoController extends Controller
     }
 
     /**
-     * @Route("/annuaires/{page}/liste-des-professionels-du-domaine-{libelle}{domaine}", requirements={"page" = "\d+"}, name="fo_annuaire_recherche")
+     * @Route("/annuaires/{page}/liste-des-professionels-du-domaine-{libelle}_{domaine}", requirements={"page" = "\d+"}, name="fo_annuaire_recherche")
      *
      * @param int $page Le numéro de la page
      */
-    public function annuairesAction(Request $request, $domaine = null, $zone = null, $libelle = null, $page)
+    public function annuairesAction(Request $request, $domaine, $zone = null, $libelle, $page)
     {
         $recherche = new Recherche();
         $form = $this->createForm('AppBundle\Form\RechercheType', $recherche);
@@ -129,6 +129,8 @@ class FoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $nbBeneficiairesParPage = 10;
+        //var_dump($libelle);
+        //die($domaine);
 
         $sliders = $em->getRepository('AppBundle:Slider')->getArticle();
         $domaines = $em->getRepository('AppBundle:Domaine')->getDomaine();
@@ -136,6 +138,8 @@ class FoController extends Controller
         $beneficiaires = $em->getRepository('AppBundle:Beneficiaire')->getAnnuaireByDomaine($domaine, $page, $nbBeneficiairesParPage);
         $evenements = $em->getRepository('AppBundle:Evenement')->getEvenement();
         $publicites = $em->getRepository('AppBundle:Publicite')->getPublicite();
+
+        //die($domaine);
 
         $pagination = array(
             'page' => $page,

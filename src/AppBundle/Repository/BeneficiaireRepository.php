@@ -209,6 +209,9 @@ class BeneficiaireRepository extends \Doctrine\ORM\EntityRepository
             /*try {
                 $result = $qb->getResult();
 
+                var_dump($result);
+                die();
+
                 return $result;
 
             } catch (NoResultException $e) {
