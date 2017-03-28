@@ -58,6 +58,7 @@
         <th class="text-center"> ID </th>
         <th class="text-center"> MATRICULES </th>
         <th class="text-center"> NOM & PRENOMS </th>
+        <th class="text-center"> D. NAISSANCES </th>
         <th class="text-center"> SEXES </th>
         <th class="text-center"> CONTACTS </th>
         <th class="text-center"> ZONES </th>
@@ -71,12 +72,13 @@
               <td class="text-right">{{ beneficiaire.id }}</td>
               <td class="text-center"><a href="{{ path('admin_beneficiaire_show', { 'id': beneficiaire.id }) }}">{{ beneficiaire.matricule }}</a></td>
               <td>{{ beneficiaire.nom }} {{ beneficiaire.prenoms }}</td>
+              <td class="text-center">{{ beneficiaire.naissance }}</td>
               <td class="text-center">{{ beneficiaire.sexe }}</td>
               <td class="text-center">{{ beneficiaire.flotte }} / {{ beneficiaire.telephone }}</td>
               <td>{{ beneficiaire.zone.libelle|capitalize }}</td>
               <td>
                 {% for domaine in beneficiaire.domaines %}
-                    {{ domaine.libelle|capitalize }} 
+                    {{ domaine.libelle|capitalize }}
                 {% endfor %}
               </td>
               <td>{{ beneficiaire.projet|capitalize }}</td>

@@ -24,7 +24,7 @@ class EvenementRepository extends \Doctrine\ORM\EntityRepository
           SELECT a
           FROM AppBundle:Evenement a
           WHERE a.statut = :stat
-          AND a.datedeb <= :today
+          AND a.datedeb >= :today
           AND a.datefin >= :today
           ORDER BY a.datedeb ASC
       ')
